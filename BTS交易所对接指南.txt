@@ -328,12 +328,12 @@ unlocked >>> import_key deposit-account 5JxyJx2KyDmAx5kpkMthWEpqGjzpwtGtEJigSMz5
 如果编译时没有引入 readline 库，则需要用 Ctrl + C 退出
 
 
-6.3 从轻钱包中取得提现账户的活动密钥
+6.3 从轻钱包中取得提现账户的活跃权限密钥
 
 参考 http://btsabc.org/article-761-1.html
 
 
-6.4 将提现账户的活动密钥导入到连接到 witness_node 的 cli_wallet
+6.4 将提现账户的活跃权限密钥导入到连接到 witness_node 的 cli_wallet
 
 unlocked >>> import_key withdrawal-account 5xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -607,4 +607,4 @@ unlocked >>> get_block 12345
 2017-06-10 修正 delayed_node 再次启动参数问题（章节 5.3 ）
 2017-06-10 增加块链结构说明（章节 1.4 ）；处理充值时推荐记录交易 ID （章节 9 ）；处理提现时推荐同时记录操作ID、块号等（章节 10.4 ）
 2017-06-11 增加处理充值时建议记录交易签名，取交易 ID 和签名的注意事项（章节 9 ）
-2017-06-14 注册账号请使用钱包模式（章节 1.2 ）
+2017-06-14 注册账号请使用钱包模式（章节 1.2 ），修改描述中“活动密钥”为“活跃权限密钥”（章节 6.3 和 6.4 ）

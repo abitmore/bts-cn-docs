@@ -67,7 +67,8 @@ https://www.openssl.org/source/old/1.0.1/openssl-1.0.1u.tar.gz
 2.4 编译
 
 运行 VS2015 x64 Native Tools Command Prompt
-注：它实际是个快捷方式，在这里 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio 2015\Visual Studio Tools\Windows Desktop Command Prompts
+注：它实际是个快捷方式，在这里：
+    C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio 2015\Visual Studio Tools\Windows Desktop Command Prompts
     内容是
     %comspec% /k ""C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"" amd64
 
@@ -83,7 +84,8 @@ nmake -f ms\nt.mak
 nmake -f ms\nt.mak install
 
 碰到的问题及解决方式：
-* 如果因为 PATH 原因，找不到 NASM 的问题，添加 PATH 后，需要执行 nmake clean 命令清除之前生成的临时文件，或者删除源码，重新解压，从头开始编译步骤，否则会碰到 asm 临时文件为空的问题
+* 如果因为 PATH 原因，找不到 NASM 的问题，添加 PATH 后，需要执行 nmake clean 命令清除之前生成的临时文件，或者删除源码，重新解压，
+  然后从头开始编译步骤，否则会碰到 asm 临时文件为空的问题
 * https://stackoverflow.com/questions/31595869/how-to-resolve-the-module-machine-type-x86-conflicts-with-target-machine-type
 
 编译完成后，会生成一个 C:\bts\openssl-1.0.1u-x64-release-static 目录，里面是编译好的库文件
@@ -192,9 +194,13 @@ Visual Studio 中，
 
 9. 其他
 
-* 上述编译出的 witness_node.exe 和 cli_wallet.exe 可以复制到其他电脑使用，但需要同时复制 msvcp140.dll 和 vcruntime140.dll 两个文件到同一个目录，它们在 C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\redist\x64\Microsoft.VC140.CRT\ 下。也可以通过静态链接的方式，或者安装 redistributable 的方式解决，本文不详述。
+* 上述编译出的 witness_node.exe 和 cli_wallet.exe 可以复制到其他电脑使用，但需要同时 msvcp140.dll 和 vcruntime140.dll 两个文件
+  复制到同一个目录，它们在 C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\redist\x64\Microsoft.VC140.CRT\ 下。
+  也可以通过静态链接的方式，或者安装 redistributable 的方式解决，本文不详述。
 
-* 如果使用 cli_wallet.exe 连接使用 wss 的 API 服务器，需要指定包含服务器根证书的 PEM 文件，参考 https://github.com/bitshares/bitshares-core/issues/314 ，比如，可下载 https://curl.haxx.se/ca/cacert.pem 保存为 d:\cacert.pem ，然后执行：
+* 如果使用 cli_wallet.exe 连接使用 wss 的 API 服务器，需要指定包含服务器根证书的 PEM 文件，
+  参考 https://github.com/bitshares/bitshares-core/issues/314 ，
+  比如，可下载 https://curl.haxx.se/ca/cacert.pem 保存为 d:\cacert.pem ，然后执行：
 
   set SSL_CERT_FILE=d:/cacert.pem
   cli_wallet -s wss://bitshares.openledger.info/ws

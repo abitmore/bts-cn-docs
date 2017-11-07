@@ -6,9 +6,7 @@
 
 # 规划
 我规划的路径是
-### 》1 确定中文技术文档的目录  （拉微信群，和比特股的开发大牛爱好者确定，如 yao ebit 张增波 常川 facjas）
-目录更新后上传到https://github.com/abitmore/bts-cn-docs
-
+### 》1 确定中文技术文档的目录  （拉微信群，和比特股的开发大牛爱好者确定，如 yao ebit 张增波 常川 facjas）目录更新后上传到https://github.com/abitmore/bts-cn-docs
 ### 》2 确定整理的方式和题材（github的gitbook觉得可以。提交的人留下bitshares账号，打等额的bitcny 或 bts） 
 ### 》3 宣传（确定宣传文案，各个区块链社区/社群， 比特股官方发表人助推）
 ### 》4 审核（确定在技术文案的内容，是在整理目录里面的，且有技术价值、指导价值，审核进入github库）
@@ -90,6 +88,10 @@
 ### <a name="39d12vjpbien0t108utuj37e6t"> yoyow</a>
 
 
+
+
+
+#历史记录分割线
 ## 目录/索引
 
 * 如何编译

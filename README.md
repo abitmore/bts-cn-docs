@@ -17,7 +17,7 @@
 ### 2 新的要求markdown提交到github，留下账号，并转账（memo留下文章名）
 ### 3 github上宣传投票给中华区代理work
 
-![](guihua.jpg)
+![](guihua.png)
 
 # 目录初稿
 ![](muluchugao.png)

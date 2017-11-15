@@ -1,0 +1,70 @@
+             			如何修改系统参数
+ 参数分为两种：一种是系统参数，另外一种系统费率。
+方式：命令行钱包
+
+1.提议 ：
+ propose_parameter_change init0 "20171019T133030" {"block_interval" : 20} true
+	
+	参数说明：
+	init0 : 提议账户
+	
+	"20170922T113530" : 提议的过期时间;
+	（提议的过期时间 - 最新的区块生成时间）必须大于committee_proposal_review_period（理事会审核周期，默认14天）,小于maximum_proposal_lifetime（提议最大生命周期）
+	最新的区块生成时间 可以通过 get_dynamic_global_properties 返回的time 参数进行查看。
+	
+	{"block_interval" : 20} ：提议修改的参
+
+	true： 是否广播
+	
+	备注：
+	普通账户也可以提议，但是账户余额必须大于(20.00005BTS,费用)
+ 
+2.批准：
+参考网址：http://docs.bitshares.org/bitshares/tutorials/committee-approve-proposal.html?highlight=approve_proposal
+
+命令： approve_proposal <fee-paying-account> <proposal-id> {"active_approvals_to_add" : ["<MY-COMMITTEE-MEMBER>"]} true
+
+例子 :  approve_proposal init0 "1.10.0" {"active_approvals_to_add" : ["test2"]} true
+
+3.到了提议的过期时间，自动批准（一半的理事会成员同意），或者失败。
+ 
+4.修改费率，使用 propose_fee_change 函数
+ 
+备注：（影响因素）
+1.审核周期(committee_proposal_review_period)
+	必须过了理事会审核周期，才可以进行通过提议。
+	 
+2.一半以上理事会成员的同意，才可以通过提议。
+   
+
+3.committee-account 账户 apply 提议，需要支付 1BTS.
+ 
+4.给committee-account账户打钱 , memo 为空。
+ transfer init0 committee-account 1000 BTS "" true
+
+DEMO:
+相关api : 
+get_global_properties    
+get_dynamic_global_properties
+vote_for_committee_member init0 init0 true true
+approve_proposal init0  "1.10.1" {"active_approvals_to_add" : ["init0"]} true
+
+
+1.修改见证人区块每块1bts
+propose_parameter_change init0 "20171027T051600" {"witness_pay_per_block": 100000} true
+
+2.买卖单交易手续费 
+propose_fee_change init0 "2017-10-23T02:24:48" {9 : { "fee": 0.1}} true
+
+3.普通转账
+propose_fee_change init0 "20171026T145148" { 0 : {"fee" : 200000,"price_per_kbyte" : 0}} true
+
+
+
+费率参数含义： 
+bitshares-core\libraries\chain\include\graphene\chain\protocol\operations.hpp
+
+
+
+
+

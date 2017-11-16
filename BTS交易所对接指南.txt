@@ -184,14 +184,28 @@ appenders=stderr,default
 
 这样之后， witness_node_data_dir/logs/default/ 目录下会同步保留最近24小时的控制台日志。
 
+3) 以下参数会减少运行需要的内存，原理是不保存内置交易引擎的历史成交记录索引。
 
-3) 以下两个参数会大量减少运行需要的内存，原理是不保存与交易所账户无关的历史数据索引。
+history-per-size = 0
+
+如果是 2.0.171105a 及以后版本，则需要设置这个参数：
+
+plugins = witness account_history
+
+注：
+* config.ini 里默认 plugins 前有个“#”符号，需要删除；
+* 默认的 plugins 配置是 “witness account_history market_history”，这里实际是去掉“market_history”；
+* 如果 config.ini 里没找到该配置项，比如从老版本升级上来时不会更新已有配置文件，
+  * 可以在 config.ini 最前面添加一行（不要加在文件最后面），
+  * 也可以另外找个空目录生成一个 config.ini 文件再拷过来修改。
+
+4) 以下两个参数会大量减少运行需要的内存，原理是不保存与交易所账户无关的历史数据索引。
 
 track-account = "1.2.12345"
 partial-operations = true
 
 请将 12345 替换成轻钱包中看到的账户数字 ID 。数字前的 "1.2." 表示类型是账户。
-
+注： config.ini 里默认 track-account 前面有个“#”符号，需要删除。
 
 如果需要监控多个账户，则使用多个 track-account 配置，如：
 
@@ -210,7 +224,7 @@ partial-operations = true
 * 如果需要增加、修改、删除追踪账号，修改后，需要重建索引才能生效。
   方法是按 Ctrl + C 结束程序，然后加 --replay-blockchain 参数重新启动，如：
 
-  ./witness_node -d witness_node_data_dir --replay-blockchain
+  ./witness_node -d witness_node_data_dir --track-account "\"1.2.12345\"" --track-account "\"1.2.12346\"" --replay-blockchain
 
 
 5.1.2 重新执行
@@ -618,3 +632,4 @@ unlocked >>> get_block 12345
 2017-06-14 注册账号请使用钱包模式（章节 1.2 ），修改描述中“活动密钥”为“活跃权限密钥”（章节 6.3 和 6.4 ）
 2017-06-20 提现账户也需要导入备注密钥（章节 6.4 ）
 2017-07-04 增加轻钱包导入备注密钥的提示（章节 6.1 ）
+2017-11-14 新增一个减少运行内存的配置方法（修改章节 5.1，也影响 5.3）

@@ -120,12 +120,22 @@ https://cmake.org/files/v3.9/cmake-3.9.4-win64-x64.zip
 下载 zip 文件后解压到 C:\bts\cmake-3.9.4-win64-x64 （不要有多层嵌套目录）
 
 
-5. 下载安装 git
+5. 下载 Doxygen （可选）
+
+Doxygen 不是必须，其用处是生成文档及在线帮助，比如在 cli_wallet 里面可以用 gethelp 命令看命令的参数说明。
+
+http://www.stack.nl/~dimitri/doxygen/download.html
+http://ftp.stack.nl/pub/users/dimitri/doxygen-1.8.13.windows.x64.bin.zip
+
+下载后解压到 C:\bts\doxygen-1.8.13.windows.x64.bin （不要有多层嵌套目录）
+
+
+6. 下载安装 git
 
 https://git-scm.com/download/win
 
 
-6. 下载 BitShares-Core 源码
+7. 下载 BitShares-Core 源码
 
 从开始菜单找到并运行 Git Bash ，在打开的命令行界面里，执行如下命令：
 
@@ -140,9 +150,9 @@ git submodule update --init --recursive
 * 2.0.170710 是本文编写时 bitshares-core 的最新稳定版本，如果需要编译其他版本，请相应修改
 
 
-7. 运行 CMake
+8. 运行 CMake
 
-7.1 创建一个文件 C:\bts\setenv_x64.bat 内容如下
+8.1 创建一个文件 C:\bts\setenv_x64.bat 内容如下
 
 @echo off
 set GRA_ROOT=C:\bts
@@ -151,9 +161,10 @@ set OPENSSL_ROOT_DIR=%OPENSSL_ROOT%
 set OPENSSL_INCLUDE_DIR=%OPENSSL_ROOT%\include
 set BOOST_ROOT=%GRA_ROOT%\boost_1_57_0
 set CMAKE_ROOT=%GRA_ROOT%\cmake-3.9.4-win64-x64
-set PATH=%BOOST_ROOT%\lib;%CMAKE_ROOT%\BIN;%PATH%
+set DOXYGEN_ROOT=%GRA_ROOT%\doxygen-1.8.13.windows.x64.bin
+set PATH=%BOOST_ROOT%\lib;%CMAKE_ROOT%\BIN;%DOXYGEN_ROOT%;%PATH%
 
-7.2 运行 VS2015 x64 Native Tools Command Prompt 然后在里面执行：
+8.2 运行 VS2015 x64 Native Tools Command Prompt 然后在里面执行：
 
 c:
 cd C:\bts
@@ -179,7 +190,7 @@ cmake-gui
 点 Open Project ，会打开 Visual Studio
 
 
-8. 编译 bitshares-core
+9. 编译 bitshares-core
 
 Visual Studio 中，
 上部工具栏里编译类型默认是 Debug ，修改为 Release
@@ -192,7 +203,7 @@ Visual Studio 中，
 * C:\bts\bin\programs\cli_wallet\Release\cli_wallet.exe
 
 
-9. 其他
+10. 其他
 
 * 上述编译出的 witness_node.exe 和 cli_wallet.exe 可以复制到其他电脑使用，但需要同时 msvcp140.dll 和 vcruntime140.dll 两个文件
   复制到同一个目录，它们在 C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\redist\x64\Microsoft.VC140.CRT\ 下。
@@ -200,7 +211,7 @@ Visual Studio 中，
 
 * 如果使用 cli_wallet.exe 连接使用 wss 的 API 服务器，需要指定包含服务器根证书的 PEM 文件，
   参考 https://github.com/bitshares/bitshares-core/issues/314 ，
-  比如，可下载 https://curl.haxx.se/ca/cacert.pem 保存为 d:\cacert.pem ，然后执行：
+  比如，可下载 https://curl.haxx.se/ca/cacert.pem 保存为 c:\bts\cacert.pem ，然后执行：
 
-  set SSL_CERT_FILE=d:/cacert.pem
+  set SSL_CERT_FILE=c:/bts/cacert.pem
   cli_wallet -s wss://bitshares.openledger.info/ws

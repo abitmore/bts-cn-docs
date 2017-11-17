@@ -533,7 +533,23 @@ unlocked >>> list_account_balances withdrawal-account
 2) 注意加上手续费。因为备注是按长度收费，所以带备注时手续费会比不带备注时高一些。
 
 
-10.3 发送提现
+10.3 目的账号名检查
+
+使用 get_account_id 命令可以检查客户输入的提现目的账号是否有效
+
+locked >>> get_account_id test-123
+get_account_id test-123
+"1.2.96698"
+
+locked >>> get_account_id test-124
+get_account_id test-124
+10 assert_exception: Assert Exception
+rec && rec->name == account_name_or_id:
+    {}
+    th_a  wallet.cpp:597 get_account
+
+
+10.4 发送提现
 
 使用 transfer2 命令发送提现交易。如：
 
@@ -546,9 +562,9 @@ unlocked >>> transfer2 withdrawal-account to-account 100 BTS "some memo"
 注：
 1) 如果币种是 BTS ，金额小数位数最多 5 位。如果是其他资产，通过 get_asset 命令可以查看资产的小数位数，"precision"字段。
 2) 也可以使用 transfer 命令，但是这样不会直接返回交易 ID ，而是需要调用其他 API 来计算出来，所以不推荐。
+3) 备注通常用 UTF-8 编码
 
-
-10.4 提现结果检查
+10.5 提现结果检查
 
 在连接到 delayed_node 的 cli_wallet 中进行结果检查。
 
@@ -563,7 +579,7 @@ unlocked >>> get_block 12345
 建议记录上述 get_relative_account_history 结果中的 id (1.11.x), block_num, trx_in_block 备查。
 
 
-10.5 关于失败重发
+10.6 关于失败重发
 
 在有些情况下可能交易发送后，没有及时被打包进入区块。
 
@@ -593,7 +609,7 @@ unlocked >>> get_block 12345
   * 正常退出后，可以对数据目录 witness_node_data_dir 打包备份，需要时可直接恢复使用
   * 如果异常退出，则重新启动时，很可能需要重建索引，启动比较慢
 
-* 如果 witness_node 出现异常，一般先尝试带 --replay-blockchain 参数重启，即手工触发重建索引
+* 如果 witness_node 出现异常，一般先尝试重启，如果不行则尝试带 --replay-blockchain 参数重启，即手工触发重建索引
   * 如果没有解决，则使用备份恢复
   * 如果没有备份，则重新同步，可能耗时较长
 
@@ -633,3 +649,4 @@ unlocked >>> get_block 12345
 2017-06-20 提现账户也需要导入备注密钥（章节 6.4 ）
 2017-07-04 增加轻钱包导入备注密钥的提示（章节 6.1 ）
 2017-11-14 新增一个减少运行内存的配置方法（修改章节 5.1，也影响 5.3）
+2017-11-17 新增提现目的账号名检查（章节 10.3 ）

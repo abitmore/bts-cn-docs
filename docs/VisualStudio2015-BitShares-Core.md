@@ -1,5 +1,5 @@
 # 使用 Visual Studio 2015 编译 BitShares-Core
-
+> 作者: abitmore
 
 ## 0.环境准备
 
@@ -231,6 +231,7 @@ Visual Studio 中，
 - 如果使用 cli_wallet.exe 连接使用 wss 的 API 服务器，需要指定包含服务器根证书的 PEM 文件，
   参考 https://github.com/bitshares/bitshares-core/issues/314 ，
   比如，可下载 https://curl.haxx.se/ca/cacert.pem 保存为 c:\bts\cacert.pem ，然后执行：
-
+```
   set SSL_CERT_FILE=c:/bts/cacert.pem
   cli_wallet -s wss://bitshares.openledger.info/ws
+```

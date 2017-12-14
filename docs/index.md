@@ -6,10 +6,10 @@
 ## 目录/索引
 
 * 如何编译
-  * [使用 Visual Studio 2015 编译 BitShares-Core](https://github.com/abitmore/bts-cn-docs/blob/master/%E4%BD%BF%E7%94%A8VisualStudio2015%E7%BC%96%E8%AF%91BitShares-Core.txt)
+  * [使用 Visual Studio 2015 编译 BitShares-Core](/VisualStudio2015-BitShares-Core)
 
 * 如何集成/对接
-  * [BTS交易所对接指南（单节点版）](https://github.com/abitmore/bts-cn-docs/blob/master/BTS%E4%BA%A4%E6%98%93%E6%89%80%E5%AF%B9%E6%8E%A5%E6%8C%87%E5%8D%97%EF%BC%88%E5%8D%95%E8%8A%82%E7%82%B9%E7%89%88%EF%BC%89.txt)
+  * [BTS交易所对接指南（单节点版）](/bts-exchange-single)
 
 
 ## 相关资料
@@ -20,11 +20,12 @@
 
 ### 中文资料
 （以下排名不分先后）
+
 * boombastic 的 Steemit 博客 https://steemit.com/@boombastic
-  * [BitShares API 服务器架设指南 - 个人篇](https://steemit.com/bitshares/@boombastic/bitshares-api)
-  * [BitShares API 服务器架设指南 - 公共API篇](https://steemit.com/bitshares/@boombastic/bitshares-api-api)
+  * [BitShares API 服务器架设指南 * 个人篇](https://steemit.com/bitshares/@boombastic/bitshares-api)
+  * [BitShares API 服务器架设指南 * 公共API篇](https://steemit.com/bitshares/@boombastic/bitshares-api-api)
 * legendx 的 Steemit 博客 https://steemit.com/@legendx
-  * [DPOS共识算法 -- 缺失的白皮书](https://steemit.com/dpos/@legendx/dpos)
+  * [DPOS共识算法 -* 缺失的白皮书](https://steemit.com/dpos/@legendx/dpos)
 * 小福星(Pluswave)的博客 https://blog.xiaofuxing.name/
   * [比特股钱包模式和账号模式的安全性差异](https://blog.xiaofuxing.name/2017/07/06/security_difference_between_wallet_mode_and_account_mode_of_bitshares_ui.html)
   * [bitsharesjs库详解二：交易广播](https://blog.xiaofuxing.name/2017/06/08/bitsharesjs_detail_transaction_broadcast.html)

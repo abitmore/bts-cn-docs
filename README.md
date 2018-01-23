@@ -53,5 +53,5 @@
 * Hi区块链资讯站及公众号 https://www.hibtc.org/
   * [一分钟安装完比特股重钱包，可以媲美中心化交易所一样的交易速度](https://mp.weixin.qq.com/s?__biz=MzAxNTIwNTEwMQ==&mid=2650185196&idx=1&sn=fc1650060dec749461ce282f9854d6ef&scene=19#wechat_redirect)
 * 邱绍锡的博客 https://qiushaoxi.com/
-  * [Bitshares 私链部署witness节点](https://www.jianshu.com/p/2cb1cdb98529) [原文](https://qiushaoxi.com/2017/12/20/bitshares-witness/)
+  * [Bitshares 私链部署witness节点](https://www.jianshu.com/p/2cb1cdb98529) / [原文](https://qiushaoxi.com/2017/12/20/bitshares-witness/)
 * 本库中 @abitmore 的部分原创文档也同步发到 Steemit 博客 https://steemit.com/@abit

@@ -18,6 +18,7 @@
 * https://github.com/bitshares/bitshares-core/wiki
 * https://docs.bitshares.org/
 * https://bitshares.org/doxygen/hierarchy.html 这个是从代码生成出来的文档，包含代码里的文档性注释。
+* https://bitsharestalk.org/index.php?topic=23925.0 搭节点
 
 
 ### 中文资料

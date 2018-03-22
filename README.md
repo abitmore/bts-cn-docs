@@ -2,7 +2,96 @@
 比特股 BitShares (BTS) 中文技术文档
 
 建这个库的目的是搜集和整理比特股 BitShare (BTS) 相关的中文技术文档，方便开发者和爱好者使用，以及共同维护。
+收录给作者800一篇的直接奖励（等值的bitcny）
 
+# 规划
+我规划的路径是
+### 》1 确定中文技术文档的目录  （拉微信群，和比特股的开发大牛爱好者确定，如 yao ebit 张增波 常川 facjas）目录更新后上传到https://github.com/abitmore/bts-cn-docs
+### 》2 确定整理的方式和题材（github的gitbook觉得可以。提交的人留下bitshares账号，打等额的bitcny 或 bts） 
+### 》3 宣传（确定宣传文案，各个区块链社区/社群， 比特股官方发表人助推）
+### 》4 审核（确定在技术文案的内容，是在整理目录里面的，且有技术价值、指导价值，审核进入github库）
+### 》5 结束（确定文章已完备，可修改规则，引导到steemit上发表，带比特股标签后社区有人赞赏）
+
+## 备注：
+### 1 旧的已发表文章收录，直接联系上，打800
+### 2 新的要求markdown提交到github，留下账号，并转账（memo留下文章名）
+### 3 github上宣传投票给中华区代理work
+
+![](guihua.png)
+
+# 目录初稿
+![](muluchugao.png)
+# <a name="6bqtgv1kglo5kjpqkrthn6pj53">比特股开发体系</a>
+## <a name="3b8dcsftbm7c0sj1s2ml544af1">比特股简史</a>
+### <a name="4257kejo046aq23uiu4nku4723"> http://btsabc.org/article-793-1.html</a>
+### <a name="6kvgpl2fta8djar0egkibbps8p"> 白皮书</a>
+### <a name="2rnvim9q12ain2oc7s712s7rrq">  http://www.8btc.com/bitshares-white-pape</a>
+## <a name="2qn1nd6p3qqfcumnio7qp7o855">系统组成</a>
+### <a name="5iuucgbbje433j5l7spn52k1a5"> bitshares-core</a>
+### <a name="3j79h6ielrcvv02j6bi55bh6ii">  bitshares-fc</a>
+### <a name="5l0hktue4gvrqvolub22j4n79c"> bitshares-ui</a>
+### <a name="590jiis6dqap5a7iifoclq9dtm">  bitshares-js</a>
+### <a name="7a2alo4khthsrca89bsljqaq5c">   bitsharesjs-ws</a>
+### <a name="0ochb2gnrahggjd94r2r4b8au2"> faucet</a>
+## <a name="57nv4nq2lelosbu9nfe61cq5h8">环境搭建</a>
+### <a name="7kpu6a5r51tvq5bb390ur6tqq6"> 编译，搭建见证节点，延迟节点</a>
+### <a name="4prsiuud11k7moslfpc78cfha0"> 编译，搭建网页钱包/交易所 bitshares-ui</a>
+### <a name="01j30sb9j5g9ml0kvl60ocepsr"> 编译，搭建水龙头服务</a>
+### <a name="1uilvjlpjgjc3snk6cpg6evkp9"> 构建私有网络的配置修改事项</a>
+### <a name="44btora4c8ppr8ehddv5eetfcl"> 使用clang编译</a>
+## <a name="0psf9pvti5hucqg236i69h9hkn">代码，功能调试</a>
+### <a name="3amvdd3vdm34qo5u9sv1b6rlgh"> 比特股命令行工具</a>
+### <a name="5avlu5mimben59arakl7hott9q">  https://blog.xiaofuxing.name/2017/06/01/uptick.html</a>
+### <a name="66gsckf5o1mrer8i831ipk9dl9"> 钱包命令行工具 cli_wallet 登录后命令使用</a>
+### <a name="1lv17r74fist8o0luj292m1h2v">  http://btsabc.org/article-779-1.html</a>
+### <a name="2cn73oh5one5lddvi5bu5eedai">  使用教程 https://github.com/cryptonomex/graphene/wiki/CLI-Wallet-Cookbook 命令列表 https://github.com/cryptonomex/graphene/blob/master/libraries/wallet/include/graphene/wallet/wallet.hpp</a>
+### <a name="6gimff1glplaaoj8l6dq1kalgc"> 自动化测试</a>
+### <a name="6dor7k29adjunl352p7sk62obu">  bitshares-core\tests</a>
+## <a name="55haeuulds5c0g5l4hu65rt7gg">API调用</a>
+### <a name="3bj4ad2ar8tfh003i7tougtar7"> API rpc调用客户端</a>
+### <a name="3h19hb7i6vfkqf3378droctg6q">  js客户端 bitsharesjs</a>
+### <a name="0vfskj7mck46ib84n13peubdi6">   https://github.com/bitshares/bitsharesjs</a>
+### <a name="06ku90q6oghto95j6af1k4stl2">  python客户端 python-bitshares</a>
+### <a name="1ke6h8a8bamg1r7ljhce0ku5n2">   https://github.com/xeroc/python-bitshares</a>
+### <a name="69frirsl0cl6kd60ln256cjo2e">    http://docs.pybitshares.com/en/latest/</a>
+### <a name="6alar80evu5kf3blibre1p0tja">  golang端</a>
+### <a name="1knf2jtva2hv8tfsireodv2pe4">  c++端</a>
+### <a name="2khsnm28obvvbucnu7tairu0qa"> 使用案例</a>
+## <a name="2lbut0j8dupfv78pekn7rpoucq">账户体系</a>
+## <a name="0qs7ek25h3bq0mfrrmu05l00m3">比特股核心/石墨烯组件分析</a>
+### <a name="2ecpkeukh2vmfb9atm94j5ktsj"> 运行时部署网络结构</a>
+### <a name="5o8s7t26fl52ncqlssn4u2jofn"> 比特股区块链存储结构介绍</a>
+### <a name="6j6555k9lm6uo5hsd1ua98prci">  存放目录，存放规则分析</a>
+### <a name="4t4qva6sl1v5ci1fh8tuikuhht">  区块的组成结构</a>
+### <a name="5f91rf9dc3pcal0npjl551vv1o"> bitshares-core代码模块介绍</a>
+### <a name="4dodqiab8usa2dsouhqcb1rm34">  代码分析</a>
+### <a name="1vck7lt7c2058k83kd5rvs9a5r">   http://www.cwyyprog.com/2017/08/24/bitshares-%E6%AF%94%E7%89%B9%E8%82%A1%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</a>
+### <a name="10nki4j65bfv8nag83ed10jh85">   http://www.cwyyprog.com/2017/08/25/bitshares-%E6%AF%94%E7%89%B9%E8%82%A1%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</a>
+### <a name="7lqcru7vmkk6v0tieoka4cgigh"> 架构介绍</a>
+### <a name="20q5bqphqob18sos5vpt204j56">  数据流</a>
+### <a name="6m46h41vojakhjt7rg7df6qs01">  控制流</a>
+### <a name="5fuebd64comicbmptan4albhof"> 比特股中的宏介绍</a>
+### <a name="7t38couhtc6b0pahsnjkge1npr">  反射宏 FC_REFLECT_DERIVED</a>
+## <a name="3vmjf87473cpjos0molkbidv04">比特股的二次开发</a>
+### <a name="0m36clv12a1pkokknaq48rf597"> 比特股插件开发</a>
+### <a name="4oupng59bh6eo8cngui26njc08">  plugins</a>
+### <a name="73k7aelq2nartcgb7obuag5otl"> 如何新增自定义结构，且保存到比特股区块链</a>
+### <a name="1lupnj2svpp665h17p30gcpif0">  libraries\chain\include\graphene\chain\</a>
+### <a name="5rakvfh9k6im6atsd3siruq318">  继承graphene::db::abstract_object</a>
+### <a name="37js91ans7gesapoi9hde3mtg8"> 如何创建操作类</a>
+### <a name="065rpciujet46ss3a1c6jes3r0">  继承base_operation</a>
+### <a name="4h6h4kl5j1aq09v63nkgo3s8ii"> 如何创建自定义API</a>
+### <a name="621cceo7hp01t6tccgigq8eq07"> 二次开发案例</a>
+### <a name="7a8gnlr1vsm6p43464o1peqf4g">  如小型的积分系统？竞猜系统？</a>
+## <a name="01iqcjvliudvmgk4obt9b9a0sh">基于比特股的项目</a>
+### <a name="7uuanrkpfv6jv1gqenrhcto31q"> 公信宝</a>
+### <a name="39d12vjpbien0t108utuj37e6t"> yoyow</a>
+
+
+
+
+
+# 历史记录分割线
 ## 目录/索引
 
 * 如何编译

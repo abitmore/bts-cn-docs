@@ -29,6 +29,12 @@
   * [BitShares API 服务器架设指南 - 公共API篇](https://steemit.com/bitshares/@boombastic/bitshares-api-api)
 * legendx 的 Steemit 博客 https://steemit.com/@legendx
   * [DPOS共识算法 -- 缺失的白皮书](https://steemit.com/dpos/@legendx/dpos)
+* Cifer 的 Steemit 博客 https://steemit.com/@cifer
+  * [Graphene 源码阅读 ~ 基础知识](https://steemit.com/bitshares/@cifer/graphene)
+  * [Graphene 源码阅读 ~ 源码结构](https://steemit.com/bitshares/@cifer/4fxtit-graphene)
+  * [Graphene 源码阅读 ~ 数据库篇 ~ 对象模型](https://steemit.com/bitshares/@cifer/4o1u9e-graphene)
+  * [Graphene 源码阅读 ~ 数据库篇 ~ 索引模型](https://steemit.com/bitshares/@cifer/7c8spa-graphene)
+  * [Graphene 源码阅读 ~ 数据库篇 ~ 对象序列化](https://steemit.com/bitshares/@cifer/vdnvb-graphene)
 * 小福星(Pluswave)的博客 https://blog.xiaofuxing.name/
   * [比特股钱包模式和账号模式的安全性差异](https://blog.xiaofuxing.name/2017/07/06/security_difference_between_wallet_mode_and_account_mode_of_bitshares_ui.html)
   * [bitsharesjs库详解二：交易广播](https://blog.xiaofuxing.name/2017/06/08/bitsharesjs_detail_transaction_broadcast.html)

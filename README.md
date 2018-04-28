@@ -35,12 +35,13 @@
   * [Graphene 源码阅读 ~ 数据库篇 ~ 对象模型](https://steemit.com/bitshares/@cifer/4o1u9e-graphene)
   * [Graphene 源码阅读 ~ 数据库篇 ~ 索引模型](https://steemit.com/bitshares/@cifer/7c8spa-graphene)
   * [Graphene 源码阅读 ~ 数据库篇 ~ 对象序列化](https://steemit.com/bitshares/@cifer/vdnvb-graphene)
-* flyingfish (chaimyu) 的 Steemit 博客 https://steemit.com/@chaimyu
+* 老鱼 (chaimyu) 的 Steemit 博客 https://steemit.com/@chaimyu
   * [bitshares研究系列【mac下安装bitshares】](https://steemit.com/cn/@chaimyu/mac-bitshares)
+  * [bitshares研究系列【visual studio编译调试bitshares】](https://steemit.com/bitshares/@chaimyu/bitshares-visual-studio-bitshares)
   * [bitshares研究系列【bitshares-ui代码分析之基本结构】](https://steemit.com/cn/@chaimyu/bitshares-ui)
   * [bitshares研究系列【bitshares-ui代码分析之api调用流程】](https://steemit.com/cn/@chaimyu/3qeec-bitshares-bitshares-ui-api)
   * [bitshares研究系列【bitshares-core api实现】](https://steemit.com/bitshares/@chaimyu/bitshares-bitshares-core-api)
-  * [bitshares研究系列【visual studio编译调试bitshares】](https://steemit.com/bitshares/@chaimyu/bitshares-visual-studio-bitshares)
+  * [bitshares研究系列【operation的实现】](https://steemit.com/bitshares/@chaimyu/bitshares-operation)
 * 小福星(Pluswave)的博客 https://blog.xiaofuxing.name/
   * [比特股钱包模式和账号模式的安全性差异](https://blog.xiaofuxing.name/2017/07/06/security_difference_between_wallet_mode_and_account_mode_of_bitshares_ui.html)
   * [bitsharesjs库详解二：交易广播](https://blog.xiaofuxing.name/2017/06/08/bitsharesjs_detail_transaction_broadcast.html)

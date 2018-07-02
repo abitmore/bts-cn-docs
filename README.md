@@ -75,4 +75,6 @@
 * BTS500的博客 https://bts500.github.io/categories/Bitshares/
   * [Bitshares 开发者系列（1）—— Api接口的访问方式](https://bts500.github.io/2018/03/01/Bitshares%20%E5%BC%80%E5%8F%91%E8%80%85%E7%B3%BB%E5%88%97%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94%20Api%E6%8E%A5%E5%8F%A3%E7%9A%84%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F/)
   * [Bitshares 开发者系列（2）—— Bitsharesjs-ws 库源码解读](https://bts500.github.io/2018/03/12/Bitshares-%E5%BC%80%E5%8F%91%E8%80%85%E7%B3%BB%E5%88%97%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94-Bitsharesjs-ws-%E5%BA%93%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/)
+* 胡桃夹子的博客 http://hutaow.com
+  * [BitShares插件开发入门](http://hutaow.com/blog/2018/06/30/bitshares-plugin-develop/)
 * 本库中 @abitmore 的部分原创文档也同步发到 Steemit 博客 https://steemit.com/@abit

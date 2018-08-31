@@ -77,4 +77,7 @@
   * [Bitshares 开发者系列（2）—— Bitsharesjs-ws 库源码解读](https://bts500.github.io/2018/03/12/Bitshares-%E5%BC%80%E5%8F%91%E8%80%85%E7%B3%BB%E5%88%97%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94-Bitsharesjs-ws-%E5%BA%93%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/)
 * 胡桃夹子的博客 http://hutaow.com
   * [BitShares插件开发入门](http://hutaow.com/blog/2018/06/30/bitshares-plugin-develop/)
+* chouheiwa的github
+  * [Java-Cli-Wallet —— 一个java版的Cli-wallet库(支持转账，挂单，注册账户，查询信息等等常用api)](https://github.com/chouheiwa/bitshares_wallet.git)
+  * [iOS-Cli-Framework —— 一个专门为iOS设备编写的cli-wallet库](https://github.com/chouheiwa/BitsharesWalletForiOS.git)
 * 本库中 @abitmore 的部分原创文档也同步发到 Steemit 博客 https://steemit.com/@abit

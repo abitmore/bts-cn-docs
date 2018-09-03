@@ -1,18 +1,19 @@
-BTS 交易所对接指南（双节点版）
+# BTS 交易所对接指南（双节点版）
+> 作者: abitmore
 
 此文目的是协助第三方交易所上线 BTS 交易。
 
 此文所述方案为双节点方案。另有单节点方案，可以节省内存、硬盘和同步时间，详见另一篇文档。
 
-1. 基本概念
+## 1. 基本概念
 
-1.1 共识
+### 1.1 共识
 
 BTS 使用 DPOS 共识机制，由持有 BTS 的人投票产生区块锻造人，标准区块间隔时间是 3 秒。
 
-1.2 账户
+### 1.2 账户
 
-1) BTS里，资金是存在账户里的，不像比特币是存在地址里。对交易所来说，需要公开一个账号供用户充值。
+1. BTS里，资金是存在账户里的，不像比特币是存在地址里。对交易所来说，需要公开一个账号供用户充值。
    可以使用网页钱包或者轻钱包注册新账号。
    注意：对于交易所来说，注册账号请使用钱包模式，而不是账户模式，因为交易所要用到一些高级功能，在账户模式下会存在问题。
         （如果是官方网页钱包或轻钱包 171102 或以上版本，第一次注册时默认是账户模式，可点击“高级”进入钱包模式）。
@@ -23,57 +24,61 @@ BTS 使用 DPOS 共识机制，由持有 BTS 的人投票产生区块锻造人�
        也可以自建节点同步完成后在钱包里通过命令获取 ID ，获取命令参考“提现目的账号名检查”章节。
    为了资金安全，交易所可以用一个账号负责充值，另用一个账号负责提现。
 
-2) 用户充值，就是从其他账号转账到交易所的公开的账号。
+2. 用户充值，就是从其他账号转账到交易所的公开的账号。
    账号名就是收款地址。
    每笔转账可以带一个备注，交易所通过这个备注来区分是哪个用户的充值。
    具体备注与交易所用户关联关系，请交易所自行设定。
    备注是加密的，只有拥有发送者或者接收者的备注密钥才可以解密。
 
-3) 用户提现，就是从交易所账号转账到用户账号，目的账号名由用户提供。
+3. 用户提现，就是从交易所账号转账到用户账号，目的账号名由用户提供。
    由于有用户需要把资金直接从一个交易所转到另一个交易所，而另一个交易所是根据备注入账，所以提现功能最好可以带备注。
 
-4) 使用网页钱包注册的账号是基本账号。可付费升级为终身会员账号，升级后，后续交易手续费节省 80% 。
+4. 使用网页钱包注册的账号是基本账号。可付费升级为终身会员账号，升级后，后续交易手续费节省 80% 。
    终身会员可以创建新账号。
    当前手续费费率标准可以在钱包内查看，从界面依次点击 浏览-费率表 进入。
 
-5) 每个账号默认有3对密钥，可以在账户-高级设定-权限页面里查看，分别为：活跃权限、账户权限、备注密钥。
+5. 每个账号默认有3对密钥，可以在账户-高级设定-权限页面里查看，分别为：活跃权限、账户权限、备注密钥。
    其中，活跃权限密钥用于转账等日常操作；账户权限密钥用于修改密钥；备注密钥用来加密和解密转账备注。
    默认情况下，活跃权限密钥与备注密钥相同，但可以修改为不同。
 
 
-1.3 资产
+### 1.3 资产
 
-1) BTS 系统里有多种资产，其中，核心资产是 BTS 。交易所上线 BTS 系统内其他资产的方法，与上线核心资产（BTS）的方式类似。
+1. BTS 系统里有多种资产，其中，核心资产是 BTS 。交易所上线 BTS 系统内其他资产的方法，与上线核心资产（BTS）的方式类似。
 
-2) 每个账户可以同时拥有多种资产。 
+2. 每个账户可以同时拥有多种资产。 
 
 
-1.4 块链结构
+### 1.4 块链结构
 
 每个块有个 ID，即 block_id，该 ID 是块内容的 hash 值；
+
 每个块包含前一块的 ID，存放在 "previous" 字段，因此形成一个链；
+
 每个块里包含多个交易，存放在 "transactions" 字段，按顺序存放；
+
   使用 API 获取块信息时，会同时返回 "transaction_ids" 字段，即交易 ID 清单，是交易（不包含签名）序列化后的 hash 值
+
 每个交易可包含多个操作，存放在 "operations" 字段，按顺序存放；
+
   每个操作也有一个 ID ，是一个全局数字编号，是程序运行中内部产生的，不是 hash 值
 
 
-2. 基础软硬件需求
+## 2. 基础软硬件需求
 
-独立服务器或者VPS
-8G 内存（更多更好）
-50G 硬盘
+- 独立服务器或者VPS
+- 8G 内存（更多更好）
+- 50G 硬盘
+- 安装 64 位 Ubuntu 16.04 LTS （推荐） ，或者 Ubuntu 14.04 LTS ，或者 Windows Server 。
 
-安装 64 位 Ubuntu 16.04 LTS （推荐） ，或者 Ubuntu 14.04 LTS ，或者 Windows Server 。
 
-
-3. 程序准备
+## 3. 程序准备
 
 要对接 BTS 系统，需要运行这几个程序：普通节点 witness_node 、延迟节点 delayed_node 、命令行钱包 cli_wallet 。
 
 单节点方案不需要运行 delayed_node 。
 
-3.1 架构说明
+### 3.1 架构说明
 
 witness_node 通过 P2P 方式连接到 BTS 网络，从网络接收最新区块，向网络广播本地签署的交易包； 
 witness_node 通过 websocket + http rpc 的方式提供 API 供其他程序调用（以下称为节点 API）。
@@ -93,15 +98,15 @@ cli_wallet 通过 http rpc 的方式提供 API 供其他程序调用（以下称
 如果不使用 delayed_node ，则需要自行判断交易是否可以回退（以下会说明推荐的判断方法）。
 
 
-3.2 Windows
+### 3.2 Windows
 
 Github 上提供编译好的 Windows 可执行文件下载，下载页面在 https://github.com/bitshares/bitshares-core/releases/latest ，
 文件为 BitShares-Core-2.0.xxxxxx-x64-cli-tools.zip ，解开即可，里面包含3个 exe 文件和两个 dll 文件。
 
-3.3 Linux
+### 3.3 Linux
 
 如果使用 Linux 系统，需要自行编译几个上述程序。推荐使用 Ubuntu 16.04 LTS ，编译步骤如下：
-
+```
 sudo apt-get update
 sudo apt-get install autoconf cmake git libboost-all-dev libssl-dev doxygen
 
@@ -113,13 +118,13 @@ mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make witness_node delayed_node cli_wallet
-
+```
 注：上述步骤中，请将 <LATEST_RELEASE_TAG> 替换成最新发布版本号，编写本文时，最新版本号是 2.0.170606
 
 编译完成后，3个程序分别是：
-* build/programs/witness_node/witness_node
-* build/programs/delayed_node/delayed_node
-* build/programs/cli_wallet/cli_wallet
+- build/programs/witness_node/witness_node
+- build/programs/delayed_node/delayed_node
+- build/programs/cli_wallet/cli_wallet
 
 上述程序可以拷贝到其他目录或者其他服务器执行。以下默认认为程序在当前目录。
 
@@ -127,7 +132,7 @@ make witness_node delayed_node cli_wallet
 如果使用 Ubuntu 14.04 LTS ，则需要先编译安装 Boost 库，然后再执行上述步骤。
 请注意，目前只支持 1.57.0 到 1.60.0 的 Boost 库。
 编译安装 Boost 库的步骤为：
-
+```
 sudo apt-get install cmake make libbz2-dev libdb++-dev libdb-dev libssl-dev openssl libreadline-dev autoconf libtool git autotools-dev build-essential g++ libbz2-dev libicu-dev python-dev doxygen
 
 wget -c 'http://sourceforge.net/projects/boost/files/boost/1.57.0/boost_1_57_0.tar.bz2/download' -O boost_1_57_0.tar.bz2
@@ -135,36 +140,36 @@ tar xjf boost_1_57_0.tar.bz2
 cd boost_1_57_0
 ./bootstrap.sh
 sudo ./b2 install
-
+```
 使用其他 Linux 发行版也可以编译，不在本文说明范围。
 
 
-4. 环境准备
+## 4. 环境准备
 
 要保证系统正常运行，需要保证服务器系统时间正确。时间不正确会导致块链无法同步、资金发送失败等各种问题。
 
 Ubuntu 系统推荐安装 NTP 服务端，方法是
-
+```
 sudo apt-get install ntp
-
+```
 Windows 系统请设置好系统时间同步。
 
 
-5. 同步数据
+## 5. 同步数据
 
 由于需要同时运行多个程序， Ubuntu 下推荐在 Screen 或者 tmux 里启动程序。
 
 以下描述主要针对 Ubuntu ，所以命令前都带 ./ 。对于 Windows ，在命令行界面 cd 到程序目录之后，执行时不需要 ./ 。
 
 
-5.1 witness_node
+### 5.1 witness_node
 
 可使用 ./witness_node --help 来查看命令参数。
 
-5.1.1 初次执行：
-
+#### 5.1.1 初次执行：
+```
 ./witness_node -d witness_node_data_dir
-
+```
 然后按 Ctrl+C 结束它。
 
 这样会在当前目录生成一个数据目录 witness_node_data_dir ，里面包含 blockchain 目录是数据存储，以及一个 config.ini 配置文件。
@@ -172,106 +177,106 @@ Windows 系统请设置好系统时间同步。
 
 对于交易所，推荐对 config.ini 配置文件作一些修改。
 
-1) 可关闭 p2p 日志，以减小硬盘存储压力，方法是找到 filename=logs/p2p/p2p.log 行，在行首添加 # 号
+1. 可关闭 p2p 日志，以减小硬盘存储压力，方法是找到 filename=logs/p2p/p2p.log 行，在行首添加 # 号
    或者将 [logger.p2p] 下面的 level=info 修改为 level=error
 
-2) 可考虑将控制台日志同时保存到文件，方法是将下述章节
-
+2. 可考虑将控制台日志同时保存到文件，方法是将下述章节
+```
 [logger.default]
 level=info
 appenders=stderr
-
+```
 修改为
-
+```
 [log.file_appender.default]
 filename=logs/default/default.log
 
 [logger.default]
 level=info
 appenders=stderr,default
-
+```
 这样之后， witness_node_data_dir/logs/default/ 目录下会同步保留最近24小时的控制台日志。
 
-3) 以下参数会减少运行需要的内存，原理是不保存内置交易引擎的历史成交记录索引。
-
+3. 以下参数会减少运行需要的内存，原理是不保存内置交易引擎的历史成交记录索引。
+```
 history-per-size = 0
-
+```
 如果是 2.0.171105a 及以后版本，则需要设置这个参数：
-
+```
 plugins = witness account_history
-
+```
 注：
-* config.ini 里默认 plugins 前有个“#”符号，需要删除；
-* 默认的 plugins 配置是 “witness account_history market_history”，这里实际是去掉“market_history”；
-* 如果 config.ini 里没找到该配置项，比如从老版本升级上来时不会更新已有配置文件，
-  * 可以在 config.ini 最前面添加一行（不要加在文件最后面），
-  * 也可以另外找个空目录生成一个 config.ini 文件再拷过来修改。
+  - config.ini 里默认 plugins 前有个“#”符号，需要删除；
+  - 默认的 plugins 配置是 “witness account_history market_history”，这里实际是去掉“market_history”；
+  - 如果 config.ini 里没找到该配置项，比如从老版本升级上来时不会更新已有配置文件，
+    - 可以在 config.ini 最前面添加一行（不要加在文件最后面），
+    - 也可以另外找个空目录生成一个 config.ini 文件再拷过来修改。
 
-4) 以下两个参数会大量减少运行需要的内存，原理是不保存与交易所账户无关的历史数据索引。
-
+4. 以下两个参数会大量减少运行需要的内存，原理是不保存与交易所账户无关的历史数据索引。
+```
 track-account = "1.2.12345"
 partial-operations = true
-
+```
 请将 12345 替换成你的账户数字 ID 。数字前的 "1.2." 表示类型是账户。
 注： config.ini 里默认 track-account 前面有个“#”符号，需要删除。
 
 如果需要监控多个账户，则使用多个 track-account 配置，如：
-
+```
 track-account = "1.2.12345"
 track-account = "1.2.12346"
 partial-operations = true
-
+```
 注：
 目前存在一个 BUG ，配置多个 track-account 会导致下面的日志修改不生效。
 绕过这个问题的方法，是不动 config.ini ，而是启动 witness_node 的时候，在命令行后面添加 --track-account 参数，比如：
-
+```
 ./witness_node --track-account "\"1.2.12345\"" --track-account "\"1.2.12346\""
-
+```
 注：
-* 参数首尾双引号需要保留，所以使用 \ 进行转义。 Linux 下可以使用双引号外加一层单引号的方式，则不需要转义。
-* 如果需要增加、修改、删除追踪账号，修改后，需要重建索引才能生效。
+- 参数首尾双引号需要保留，所以使用 \ 进行转义。 Linux 下可以使用双引号外加一层单引号的方式，则不需要转义。
+- 如果需要增加、修改、删除追踪账号，修改后，需要重建索引才能生效。
   方法是按 Ctrl + C 结束程序，然后加 --replay-blockchain 参数重新启动，如：
-
+```
   ./witness_node -d witness_node_data_dir --track-account "\"1.2.12345\"" --track-account "\"1.2.12346\"" --replay-blockchain
+```
 
-
-5.1.2 重新执行
+#### 5.1.2 重新执行
 
 再次启动 witness_node ，开始同步数据。根据网络条件、服务器硬件条件不同，初次同步可能需要花几个小时到几天时间。
-
+```
 ./witness_node -d witness_node_data_dir --rpc-endpoint 127.0.0.1:8090 --track-account "\"1.2.12345\"" --track-account "\"1.2.12346\"" --partial-operations true
-
+```
 上述命令中，使用 --rpc-endpoint 开启节点 API 服务，这样就可以使用 cli_wallet 和其他程序连接使用
 
 
 5.2 连接到 witness_node 的 cli_wallet
-
+```
 ./cli_wallet -w witness_wallet.json -s ws://127.0.0.1:8090 -H 127.0.0.1:8091
-
+```
 上述命令使用 -w 参数指定钱包文件， -s 参数连接到 witness_node ， -H 参数开启钱包 API 服务
 
 执行成功会显示：
-
+```
 new >>> 
-
+```
 首先需要为钱包设置一个密码
-
+```
 new >>> set_password my_password_1234
-
+```
 执行成功会显示：
-
+```
 locked >>>
-
+```
 然后解锁钱包
-
+```
 locked >>> unlock my_password_1234
-
+```
 解锁成功会显示：
-
+```
 unlocked >>>
-
+```
 使用 info 命令可以查看当前同步情况
-
+```
 unlocked >>> info
 info
 {
@@ -283,21 +288,21 @@ info
   "participation": "96.87500000000000000",
   ...
 }
+```
 
 
-
-5.3 delayed_node
+### 5.3 delayed_node
 
 初次执行：
-
+```
 ./delayed_node -d delayed_node_data_dir --trusted-node 127.0.0.1:8090
-
+```
 然后按 Ctrl+C 结束它。
 
 参考 witness_node 章节修改 delayed_node_data_dir 目录下的 config.ini 文件，然后重新启动
-
+```
 ./delayed_node -d delayed_node_data_dir --trusted-node 127.0.0.1:8090 --rpc-endpoint 127.0.0.1:8092  --track-account "\"1.2.12345\"" --track-account "\"1.2.12346\"" --partial-operations true -s "0.0.0.0:0" --p2p-endpoint "0.0.0.0:0" --seed-nodes "[]"
-
+```
 上述命令中， 最后的3个参数 -s --p2p-endpoint --seed-nodes 的目的是防止节点直接与 p2p 网络建立连接，导致数据不可信。
 
 
@@ -305,21 +310,21 @@ info
 delayed_node 初次同步时，控制台输出会很多，可以采取重定向到文件然后查看文件的方式来检查同步情况
 
 
-5.4 连接到 delayed_node 的 cli_wallet
-
+### 5.4 连接到 delayed_node 的 cli_wallet
+```
 ./cli_wallet -w delayed_wallet.json -s ws://127.0.0.1:8092 -H 127.0.0.1:8093
-
+```
 请参考前面的章节设置密码及解锁。
 
 
-6. 账户设置
+## 6. 账户设置
 
 考虑到安全性，可以使用两个账号分别处理充值和提现，这里假设 deposit-account 用于充值，withdrawal-account 用于提现。
 
-6.1 修改充值账户的备注密钥
+### 6.1 修改充值账户的备注密钥
 
 在上述任何一个 cli_wallet 中执行 suggest_brain_key ，会得到一对密钥，示例如下：
-
+```
 unlocked >>> suggest_brain_key
 suggest_brain_key
 {
@@ -327,7 +332,7 @@ suggest_brain_key
   "wif_priv_key": "5JxyJx2KyDmAx5kpkMthWEpqGjzpwtGtEJigSMz5XE1AtrQaZXu",
   "pub_key": "BTS69uKRvM8dAPn8En4SCi2nMTHKXt1rWrohFbwaPwv2rAbT3XFzf"
 }
-
+```
 在轻钱包里，账户权限页面，将备注密钥修改为上述结果中的 pub_key 
 
 注：
@@ -337,14 +342,14 @@ suggest_brain_key
    导入后可以做个新的备份。
 
 
-6.2 将充值账户的备注密钥导入到连接到 delayed_node 的 cli_wallet
+### 6.2 将充值账户的备注密钥导入到连接到 delayed_node 的 cli_wallet
 
 如果钱包已锁定，需要先用 unlock 命令解锁。
 
 这里需用到上述 suggest_brain_key 结果中的 wif_priv_key ：
-
+```
 unlocked >>> import_key deposit-account 5JxyJx2KyDmAx5kpkMthWEpqGjzpwtGtEJigSMz5XE1AtrQaZXu
-
+```
 导入时 cli_wallet 会自动生成一个备份文件，可删除。
 
 这时可按 Ctrl + D 退出钱包，对钱包文件 delayed_wallet.json 进行备份。
@@ -354,67 +359,81 @@ unlocked >>> import_key deposit-account 5JxyJx2KyDmAx5kpkMthWEpqGjzpwtGtEJigSMz5
 如果编译时没有引入 readline 库，则需要用 Ctrl + C 退出
 
 
-6.3 从轻钱包中取得提现账户的活跃权限密钥
+### 6.3 从轻钱包中取得提现账户的活跃权限密钥
 
 参考 http://btsabc.org/article-761-1.html
 
 
-6.4 将提现账户的活跃权限密钥导入到连接到 witness_node 的 cli_wallet
-
+### 6.4 将提现账户的活跃权限密钥导入到连接到 witness_node 的 cli_wallet
+```
 unlocked >>> import_key withdrawal-account 5xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
+```
 同样可以对钱包文件作个备份。
 
 注：检查一下提现账户的活跃权限密钥和备注密钥是否一样，如果不一样，则需要将备注密钥也导入，否则无法处理带备注的提现。导入命令仍然是：
-
+```
 unlocked >>> import_key withdrawal-account 5xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
 
-
-7. 钱包命令
+## 7. 钱包命令
 
 cli_wallet 里，
-* 使用 help 命令可以列出命令清单及参数
-* 如果编译时有 doxygen ，使用 gethelp 命令可以获取具体命令的参数说明及示例，如
-
+- 使用 help 命令可以列出命令清单及参数
+- 如果编译时有 doxygen ，使用 gethelp 命令可以获取具体命令的参数说明及示例，如
+```
 unlocked >>> gethelp get_account
+```
 
-
-8. 钱包 API
+## 8. 钱包 API
 
 钱包开启了 http rpc 方式的 API 服务时，可以通过 http rpc 方式调用所有钱包命令，效果与在钱包里输入命令相同。
 
 示例：
-
+```
 curl -d '{"jsonrpc": "2.0", "method": "get_block", "params": [1], "id": 1}' http://127.0.0.1:8093/rpc
-
+```
 即：method 传入命令名，params 数组传入参数清单。
 
 返回：
-
-{"id":1,"result":{"previous":"0000000000000000000000000000000000000000","timestamp":"2015-10-13T14:12:24","witness":"1.6.8","transaction_merkle_root":"0000000000000000000000000000000000000000","extensions":[],"witness_signature":"1f53542bb60f1f7a653bac70d6b1613e73b9adc952031e30e591e601dd60d493ba5c9a832e155ff0c40ea1dd53512e9f93bf65a8191497ea67d701bc2502f93af7","transactions":[],"block_id":"00000001b656820f72f6b28cda811778632d4998","signing_key":"BTS6ZQEFsPmG6jWspNDdZHkehNmPpG7gkSHkphmRZQWaJ2LrcaVSi","transaction_ids":[]}}
-
+```json
+{
+    "id": 1,
+    "result": {
+        "previous": "0000000000000000000000000000000000000000",
+        "timestamp": "2015-10-13T14:12:24",
+        "witness": "1.6.8",
+        "transaction_merkle_root": "0000000000000000000000000000000000000000",
+        "extensions": [],
+        "witness_signature": "1f53542bb60f1f7a653bac70d6b1613e73b9adc952031e30e591e601dd60d493ba5c9a832e155ff0c40ea1dd53512e9f93bf65a8191497ea67d701bc2502f93af7",
+        "transactions": [],
+        "block_id": "00000001b656820f72f6b28cda811778632d4998",
+        "signing_key": "BTS6ZQEFsPmG6jWspNDdZHkehNmPpG7gkSHkphmRZQWaJ2LrcaVSi",
+        "transaction_ids": []
+    }
+}
+```
 如果执行成功，结果会有 result ，否则会有 error 。
 
 
 注意：
 在钱包里输入命令，返回结果是经过美化的；使用 http rpc 请求时，返回的是 json 格式的原始数据。关于原始数据，需要注意的有：
-* 金额是 {"amount":467116432,"asset_id":"1.3.0"} 格式，其中
-  * asset_id 可以通过 get_asset 命令查到具体名称， BTS 的 asset_id 是 1.3.0 ，其他资产有其他 id
-  * amount 是数量去掉小数点之后的值，比如 BTS 是 5 位小数，上面例子中实际是 4671.16432 BTS
-* 账户是 1.2.xxxxx 的格式，可以通过 get_account 获取账户信息
-* 操作类型（op）是数值格式，比如 0 表示转账操作
+- 金额是 {"amount":467116432,"asset_id":"1.3.0"} 格式，其中
+  - asset_id 可以通过 get_asset 命令查到具体名称， BTS 的 asset_id 是 1.3.0 ，其他资产有其他 id
+  - amount 是数量去掉小数点之后的值，比如 BTS 是 5 位小数，上面例子中实际是 4671.16432 BTS
+- 账户是 1.2.xxxxx 的格式，可以通过 get_account 获取账户信息
+- 操作类型（op）是数值格式，比如 0 表示转账操作
 
 
-9. 处理充值
+## 9. 处理充值
 
 使用 get_relative_account_history 命令来查询充值账户历史，检测是否有新的充值。如：
-
+```
 unlocked >>> get_relative_account_history deposit-account 1 100 100
 
 unlocked >>> get_relative_account_history deposit-account 101 100 200
 
 curl -d '{"jsonrpc": "2.0", "method": "get_relative_account_history", "params": ["deposit-account",1,100,100], "id": 1}' http://127.0.0.1:8093/rpc
-
+```
 
 四个参数分别为：账户名，最小编号，最大返回数量，最大编号。编号从 1 开始。
 
@@ -422,9 +441,9 @@ curl -d '{"jsonrpc": "2.0", "method": "get_relative_account_history", "params": 
 目前输入最大数量超过 100 时有个bug，导致结果不准，使用时请避免 limit 超过 100 。
 
 返回结果是一个数组。
-* 如果没有新充值，则数组长度为 0 。
-* 如果有新的记录，其中第N条数据为 result[N]，格式可能为：
-
+- 如果没有新充值，则数组长度为 0 。
+- 如果有新的记录，其中第N条数据为 result[N]，格式可能为：
+```json
 {  
    "memo":"",
    "description":"Transfer 1 BTS from a to b -- Unlock wallet to see memo.   (Fee: 0.22941 BTS)",
@@ -464,7 +483,7 @@ curl -d '{"jsonrpc": "2.0", "method": "get_relative_account_history", "params": 
       "virtual_op":1234
    }
 }
-
+```
 其中 result[N]["op"]["op"] 是数组格式，取数组里第一个元素 result[N]["op"]["op"][0] ，如果是 0 ，则表示转账；
 则可以取第二个元素中 "to" 字段，即 result[N]["op"]["op"][1]["to"] ，判断它是否与 deposit-account 的 ID 相同，来判断是否转入；
 如果是，则取第二个字段中 "amount" 字段里 "asset_id" 字段 result[N]["op"]["op"][1]["amount"]["asset_id"] 判断是否正确资产类型，
@@ -477,35 +496,35 @@ result[N]["op"]["id"] 是这笔转账的唯一 ID ，可以记录备查。
 为了方便检查问题，建议在充值检测时，记录操作对应的交易 ID 和交易签名，方法如下：
 
 根据上述 block_num ，调用 get_block 命令获取块内容，如
-
+```
 unlocked >>> get_block 16000000
 
 curl -d '{"jsonrpc": "2.0", "method": "get_block", "params": [160000], "id": 1}' http://127.0.0.1:8093/rpc
-
+```
 设结果中块内容为 result ，根据上述 trx_in_block ，
 取 result["transaction_ids"][trx_in_block] ，即为对应的交易 ID；
 取 result["transactions"][trx_in_block]["signatures"] ，即为交易签名，是个数组，因为多重签名账户转账可能包含多个签名
 
 注：
-1) 钱包必须先解锁才能解密备注。
-2) 如果检测到有充值的备注不正确，或者资产类型不正确，注意不要简单退回，因为可能是从其他交易所转来的，退回后对方处理起来也会很麻烦。
-3) 如果不使用 delayed_node ，而只使用一个 witness_node ，需要自行判断交易是否会被回退。
+1. 钱包必须先解锁才能解密备注。
+2. 如果检测到有充值的备注不正确，或者资产类型不正确，注意不要简单退回，因为可能是从其他交易所转来的，退回后对方处理起来也会很麻烦。
+3. 如果不使用 delayed_node ，而只使用一个 witness_node ，需要自行判断交易是否会被回退。
    可参考下面“提现”章节的网络状态检查，再加上一个较大的确认数来判断，比如需要 50 个确认。
-4) 一个块里很可能有多笔充值，结果的 block_num 相同，甚至可能 trx_in_block 和 op_in_trx 也相同，但 virtual_op 不同，需注意处理。
+4. 一个块里很可能有多笔充值，结果的 block_num 相同，甚至可能 trx_in_block 和 op_in_trx 也相同，但 virtual_op 不同，需注意处理。
    可以肯定 blocknum + trx_in_block + op_in_trx + vitrual_op 的组合是唯一的。
    这里还要注意个问题， virtual_op 的数据目前有个 BUG，如果不是每次重启参数都一样并且都 replay ，重新查历史数据，会发现这个值会不一致
-5) 由于存在“提议”功能，可以延期执行，用 get_block 然后用 trx_in_block 定位时可能取不到对应交易，或者取到的交易与充值操作不对应。
+5. 由于存在“提议”功能，可以延期执行，用 get_block 然后用 trx_in_block 定位时可能取不到对应交易，或者取到的交易与充值操作不对应。
    延期执行功能目前很少有人用，但理论上存在，请注意错误处理。
 
 
-10. 处理提现
+## 10. 处理提现
 
-10.1 网络状态检查
+### 10.1 网络状态检查
 
 为了安全起见，只有当 witness_node 网络正常时，才处理提现。
 
 在连接到 witness_node 的 cli_wallet 中使用 info 命令检查网络状态。
-
+```
 unlocked >>> info
 info
 {
@@ -517,11 +536,11 @@ info
   "participation": "96.87500000000000000",
   ...
 }
-
+```
 
 需检查的字段有：
-* head_block_age 最好是在 1 分钟以内
-* participation 最好在 80 以上，表示 witness_node 所连网络有 80% 的出块节点正常工作
+- head_block_age 最好是在 1 分钟以内
+- participation 最好在 80 以上，表示 witness_node 所连网络有 80% 的出块节点正常工作
 
 
 另外，网络正常时，在连接到 delayed_node 的 cli_wallet 中查看 info 时，
@@ -530,21 +549,21 @@ info
 这个可以作为参考。
 
 
-10.2 提现账户余额检查
+### 10.2 提现账户余额检查
 
 使用 list_account_balances 命令检查提现账户余额是否足够（注意资产类型、并且算上手续费）
-
+```
 unlocked >>> list_account_balances withdrawal-account
-
+```
 注：
-1) 注意资产类型
-2) 注意加上手续费。因为备注是按长度收费，所以带备注时手续费会比不带备注时高一些。
+1. 注意资产类型
+2. 注意加上手续费。因为备注是按长度收费，所以带备注时手续费会比不带备注时高一些。
 
 
-10.3 提现目的账号名检查
+### 10.3 提现目的账号名检查
 
 使用 get_account_id 命令可以检查客户输入的提现目的账号是否有效
-
+```
 locked >>> get_account_id test-123
 get_account_id test-123
 "1.2.96698"
@@ -556,38 +575,38 @@ rec && rec->name == account_name_or_id:
     {}
     th_a  wallet.cpp:597 get_account
 
-
-10.4 发送提现
+```
+### 10.4 发送提现
 
 使用 transfer2 命令发送提现交易。如：
-
+```
 unlocked >>> transfer2 withdrawal-account to-account 100 BTS "some memo"
-
+```
 参数分别是：源账户名，目的账户名，金额，币种，备注 
 
 该命令会广播交易，然后返回一个数组，第一个元素是交易 id ，第二个元素是详细交易内容
 
 注：
-1) 如果币种是 BTS ，金额小数位数最多 5 位。如果是其他资产，通过 get_asset 命令可以查看资产的小数位数，"precision"字段。
-2) 也可以使用 transfer 命令，但是这样不会直接返回交易 ID ，而是需要调用其他 API 来计算出来，所以不推荐。
-3) 备注通常用 UTF-8 编码
+1. 如果币种是 BTS ，金额小数位数最多 5 位。如果是其他资产，通过 get_asset 命令可以查看资产的小数位数，"precision"字段。
+2. 也可以使用 transfer 命令，但是这样不会直接返回交易 ID ，而是需要调用其他 API 来计算出来，所以不推荐。
+3. 备注通常用 UTF-8 编码
 
-10.5 提现结果检查
+### 10.5 提现结果检查
 
 在连接到 delayed_node 的 cli_wallet 中进行结果检查。
 
 用 get_relative_account_history 命令获取 withdrawal-account 的提现历史，如果发现有新的记录，表示交易已经进块并且不可回退；
 
 根据该条记录的 block_num 字段，使用 get_block 命令查询详情
-
+```
 unlocked >>> get_block 12345
-
+```
 返回结果中， transaction_ids 字段数据里应该包含前面的交易 id ，。
 
 建议记录上述 get_relative_account_history 结果中的 id (1.11.x), block_num, trx_in_block 备查。
 
 
-10.6 关于失败重发
+### 10.6 关于失败重发
 
 在有些情况下可能交易发送后，没有及时被打包进入区块。
 
@@ -600,55 +619,56 @@ unlocked >>> get_block 12345
 因此，如果出现交易广播了但没有被打包，先检查本机系统时间是否滞后。
 
 此外，如果发现 delayed_node 里一直没有该笔提现，
-* 如果 delayed_node 最新块时间已经过了交易的超时时间，那么重发是安全的。
-* 如果还没超时，先检查 witness_node 里该笔交易是否已经被打包。
-  * 如果 witness_node 里也没有，则继续耐心等超时。
-  * 如果 witness_node 里有，那么请耐心等待该笔出现在 delayed_node ，或者从 witness_node 里消失。
-    * 如果等待一段时间（比如几分钟）后交易仍然没有出现在 delayed_node ，也没从 witness_node 里消失，则很可能 witness_node 进入了一个较短分叉链，或者网络出现问题，导致交易无法完全确认。
+- 如果 delayed_node 最新块时间已经过了交易的超时时间，那么重发是安全的。
+- 如果还没超时，先检查 witness_node 里该笔交易是否已经被打包。
+  - 如果 witness_node 里也没有，则继续耐心等超时。
+  - 如果 witness_node 里有，那么请耐心等待该笔出现在 delayed_node ，或者从 witness_node 里消失。
+    - 如果等待一段时间（比如几分钟）后交易仍然没有出现在 delayed_node ，也没从 witness_node 里消失，则很可能 witness_node 进入了一个较短分叉链，或者网络出现问题，导致交易无法完全确认。
 
 
 
-11. 其他
+## 11. 其他
 
-* cli_wallet 有个参数 --daemon ，使用此参数启动后，会在后台运行
+- cli_wallet 有个参数 --daemon ，使用此参数启动后，会在后台运行
 
-* 需要关闭 witness_node 时，按一次 Ctrl C，然后等待程序自己退出。
-  * 正常退出后，重新启动时，不需重建索引，启动会比较快
-  * 正常退出后，可以对数据目录 witness_node_data_dir 打包备份，需要时可直接恢复使用
-  * 如果异常退出，则重新启动时，很可能需要重建索引，启动比较慢
+- 需要关闭 witness_node 时，按一次 Ctrl C，然后等待程序自己退出。
+  - 正常退出后，重新启动时，不需重建索引，启动会比较快
+  - 正常退出后，可以对数据目录 witness_node_data_dir 打包备份，需要时可直接恢复使用
+  - 如果异常退出，则重新启动时，很可能需要重建索引，启动比较慢
 
-* 如果 witness_node 出现异常，一般先尝试重启，如果不行则尝试带 --replay-blockchain 参数重启，即手工触发重建索引
-  * 如果没有解决，则使用备份恢复
-  * 如果没有备份，则重新同步，可能耗时较长
+- 如果 witness_node 出现异常，一般先尝试重启，如果不行则尝试带 --replay-blockchain 参数重启，即手工触发重建索引
+  - 如果没有解决，则使用备份恢复
+  - 如果没有备份，则重新同步，可能耗时较长
 
-* delayed_node 同上。
+- delayed_node 同上。
 
-* 多重签名： BTS 原生支持账户级多重签名，并且有提案-批准的机制，可以在线发起多签请求，然后确认完成多签交易，具体参考相关教程
+- 多重签名： BTS 原生支持账户级多重签名，并且有提案-批准的机制，可以在线发起多签请求，然后确认完成多签交易，具体参考相关教程
 
-* 硬件钱包： 暂无支持
+- 硬件钱包： 暂无支持
 
-* 冷存储： 可以实现，步骤有些复杂，示例：
-  * 在离线机器，启动 witness_node 及 cli_wallet ，使用 suggest_brain_key 命令离线生成密钥对；
-  * 然后用轻钱包将账户密钥修改为上述密钥，则账户进入冷存状态
-  * 需要动用冷存账户时，
-    * 可以用暂时变热的方式，即将私钥导入轻钱包使用，用完后再换成新密钥
-    * 纯冷模式也可实现，但当前 cli_wallet 支持不好，有需要的请单独联系
+- 冷存储： 可以实现，步骤有些复杂，示例：
+  - 在离线机器，启动 witness_node 及 cli_wallet ，使用 suggest_brain_key 命令离线生成密钥对；
+  - 然后用轻钱包将账户密钥修改为上述密钥，则账户进入冷存状态
+  - 需要动用冷存账户时，
+    - 可以用暂时变热的方式，即将私钥导入轻钱包使用，用完后再换成新密钥
+    - 纯冷模式也可实现，但当前 cli_wallet 支持不好，有需要的请单独联系
 
 
-12. 相关资料
+## 12. 相关资料
 
-* 图文教程 http://jc.btsabc.org/
-  * 自建节点教程 http://btsabc.org/article-477-1.html
-  * 获取账户私钥 http://btsabc.org/article-761-1.html
-* 英文对接文档 http://docs.bitshares.org/integration/exchanges/step-by-step.html
-* 英文 API 文档 http://docs.bitshares.org/api/index.html
+- 图文教程 http://jc.btsabc.org/
+  - 自建节点教程 http://btsabc.org/article-477-1.html
+  - 获取账户私钥 http://btsabc.org/article-761-1.html
+- 英文对接文档 http://docs.bitshares.org/integration/exchanges/step-by-step.html
+- 英文 API 文档 http://docs.bitshares.org/api/index.html
 
 
 此文同步首发于 
-* https://steemit.com/bitshares/@abit/bitshares
-* https://bitsharestalk.org/index.php/topic,24346.0.html
+- https://steemit.com/bitshares/@abit/bitshares
+- https://bitsharestalk.org/index.php/topic,24346.0.html
 
-修改记录：
+## 修改记录：
+```
 2017-06-09 修正 delayed_node 初次启动参数问题（章节 5.3 ）
 2017-06-10 修正 delayed_node 再次启动参数问题（章节 5.3 ）
 2017-06-10 增加块链结构说明（章节 1.4 ）；处理充值时推荐记录交易 ID （章节 9 ）；处理提现时推荐同时记录操作ID、块号等（章节 10.4 ）
@@ -660,3 +680,4 @@ unlocked >>> get_block 12345
 2017-11-17 新增提现目的账号名检查（章节 10.3 ）
 2017-11-17 增加轻钱包 171102 导致的一些改动 （影响章节 1.2, 5.1 ）
 2017-11-20 文档重命名为双节点版
+```

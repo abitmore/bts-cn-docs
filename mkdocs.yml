@@ -1,0 +1,28 @@
+site_name: BitShares中文文档
+site_url: https://bitsharescn.github.io/bts-cn-docs/
+repo_url: https://github.com/BitSharesCn/bts-cn-docs
+site_description: 'BitShares中文文档'
+
+site_author: abitmore
+copyright: abitmore
+
+theme: readthedocs
+
+pages:
+    - 欢迎: index.md
+    - 使用 Visual Studio 2015 编译 BitShares-Core: VisualStudio2015-BitShares-Core.md
+    - BTS交易所对接指南:
+      - 单节点版: bts-exchange-single.md
+      - 双节点版: bts-exchange-multi.md
+
+
+markdown_extensions:
+  - extra
+  - tables
+  - toc:
+      permalink: True
+  - fenced_code
+  - smarty
+  - mdx_math:
+      enable_dollar_delimiter: True
+  - footnotes

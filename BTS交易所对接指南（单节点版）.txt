@@ -107,7 +107,8 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
 make witness_node cli_wallet
 
-注：上述步骤中，请将 <LATEST_RELEASE_TAG> 替换成最新发布版本号，编写本文时，最新版本号是 2.0.171105a
+注：上述步骤中，请将 <LATEST_RELEASE_TAG> 替换成最新发布版本号。
+    （在 https://github.com/bitshares/bitshares-core/releases 可以查到最新版本，比如 2.0.180823 ）
 
 编译完成后，得到两个可执行程序分别是：
 * build/programs/witness_node/witness_node

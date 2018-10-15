@@ -15,6 +15,8 @@
 ## 相关资料
 
 ### 英文资料
+* https://how.bitshares.works/ 针对终端用户的文档
+* https://dev.bitshares.works/ 针对开发者的文档
 * https://github.com/bitshares/bitshares-core/wiki
 * https://docs.bitshares.org/
 * https://bitshares.org/doxygen/hierarchy.html 这个是从代码生成出来的文档，包含代码里的文档性注释。

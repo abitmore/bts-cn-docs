@@ -82,4 +82,4 @@
 * chouheiwa的github
   * [Java-Cli-Wallet —— 一个java版的Cli-wallet库(支持转账，挂单，注册账户，查询信息等等常用api)](https://github.com/chouheiwa/bitshares_wallet.git)
   * [iOS-Cli-Framework —— 一个专门为iOS设备编写的cli-wallet库](https://github.com/chouheiwa/BitsharesWalletForiOS.git)
-* 本库中 @abitmore 的部分原创文档也同步发到 Steemit 博客 https://steemit.com/@abit
+* 本库中 @abitmore 的部分原创文档也同步发到 Hive 博客 https://hive.blog/@abit

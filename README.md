@@ -29,6 +29,15 @@
 * boombastic 的 Steemit 博客 https://steemit.com/@boombastic
   * [BitShares API 服务器架设指南 - 个人篇](https://steemit.com/bitshares/@boombastic/bitshares-api)
   * [BitShares API 服务器架设指南 - 公共API篇](https://steemit.com/bitshares/@boombastic/bitshares-api-api)
+* ETY001 的文章
+  * [用 docker compose 搭建 bitshares elastic search](https://steemit.com/cn-dev/@ety001/docker-compose-bitshares-elastic-search)
+  * [重写了我的bitshares-elasticsearch的docker-compose](https://steemit.com/cn/@ety001/bitshares-elasticsearch-docker-compose)
+  * [对之前的 Bitshares Elastic Search 增加 Kibana](https://akawa.ink/2019/10/11/bitshares-es-node-add-kibana.html)
+  * [解决nginx反代kibana显示空白页的问题](https://akawa.ink/2020/04/26/fix-blank-page-when-proxy-kibana-through-nginx.html)
+  * [快速搭建私有单节点 Bitshares Testnet（一）](https://steemit.com/cn/@ety001/bitshares-testnet)
+  * [快速搭建私有单节点 Bitshares Testnet（二）](https://steemit.com/cn/@ety001/4sr2bf-bitshares-testnet)
+  * [使用 bitsharesjs 库创建新用户Demo](https://steemit.com/cn/@ety001/bitsharesjs-demo)
+  * [在自有私链上使用bitshares-js库](https://steemit.com/cn/@ety001/bitshares-js)
 * legendx 的 Steemit 博客 https://steemit.com/@legendx
   * [DPOS共识算法 -- 缺失的白皮书](https://steemit.com/dpos/@legendx/dpos)
 * Cifer 的 Steemit 博客 https://steemit.com/@cifer

@@ -19,7 +19,7 @@
 * https://dev.bitshares.works/ 针对开发者的文档
 * https://github.com/bitshares/bitshares-core/wiki
 * https://docs.bitshares.org/
-* https://bitshares.org/doxygen/hierarchy.html 这个是从代码生成出来的文档，包含代码里的文档性注释。
+* https://doxygen.bitshares.org/hierarchy.html 这个是从代码生成出来的文档，包含代码里的文档性注释。
 * https://bitsharestalk.org/index.php?topic=23925.0 搭节点
 * https://steemit.com/bitshares/@ihashfury/distributed-access-to-the-bitshares-decentralised-exchange 搭网页钱包
 

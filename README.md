@@ -8,6 +8,7 @@
 * 如何编译
   * [使用 Visual Studio 2015 编译 BitShares-Core](https://github.com/abitmore/bts-cn-docs/blob/master/%E4%BD%BF%E7%94%A8VisualStudio2015%E7%BC%96%E8%AF%91BitShares-Core.txt)
   * [Win 10 编译bitshare-core](https://github.com/abitmore/bts-cn-docs/blob/master/Win%2010%20%E7%BC%96%E8%AF%91bitshare-core.md)
+  * [CentOS编译BTS节点程序及命令行钱包](https://github.com/abitmore/bts-cn-docs/blob/master/CentOS%E7%BC%96%E8%AF%91BTS%E8%8A%82%E7%82%B9%E7%A8%8B%E5%BA%8F%E5%8F%8A%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%92%B1%E5%8C%85.md)
 
 * 如何集成/对接
   * [BTS交易所对接指南（单节点版）](https://github.com/abitmore/bts-cn-docs/blob/master/BTS%E4%BA%A4%E6%98%93%E6%89%80%E5%AF%B9%E6%8E%A5%E6%8C%87%E5%8D%97%EF%BC%88%E5%8D%95%E8%8A%82%E7%82%B9%E7%89%88%EF%BC%89.txt)

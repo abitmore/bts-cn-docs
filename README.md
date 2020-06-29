@@ -7,6 +7,7 @@
 
 * 如何编译
   * [使用 Visual Studio 2015 编译 BitShares-Core](https://github.com/abitmore/bts-cn-docs/blob/master/%E4%BD%BF%E7%94%A8VisualStudio2015%E7%BC%96%E8%AF%91BitShares-Core.txt)
+  * [Win 10 编译bitshare-core](https://github.com/abitmore/bts-cn-docs/blob/master/Win%2010%20%E7%BC%96%E8%AF%91bitshare-core.md)
 
 * 如何集成/对接
   * [BTS交易所对接指南（单节点版）](https://github.com/abitmore/bts-cn-docs/blob/master/BTS%E4%BA%A4%E6%98%93%E6%89%80%E5%AF%B9%E6%8E%A5%E6%8C%87%E5%8D%97%EF%BC%88%E5%8D%95%E8%8A%82%E7%82%B9%E7%89%88%EF%BC%89.txt)
@@ -17,8 +18,8 @@
 ### 英文资料
 * https://how.bitshares.works/ 针对终端用户的文档
 * https://dev.bitshares.works/ 针对开发者的文档
-* https://github.com/bitshares/bitshares-core/wiki
-* https://docs.bitshares.org/
+* https://github.com/bitshares/bitshares-core/wiki 一些核心开发文档
+* https://docs.bitshares.org/ 目前是重定向到 https://how.bitshares.works/
 * https://doxygen.bitshares.org/hierarchy.html 这个是从代码生成出来的文档，包含代码里的文档性注释。
 * https://bitsharestalk.org/index.php?topic=23925.0 搭节点
 * https://steemit.com/bitshares/@ihashfury/distributed-access-to-the-bitshares-decentralised-exchange 搭网页钱包
@@ -38,6 +39,10 @@
   * [快速搭建私有单节点 Bitshares Testnet（二）](https://steemit.com/cn/@ety001/4sr2bf-bitshares-testnet)
   * [使用 bitsharesjs 库创建新用户Demo](https://steemit.com/cn/@ety001/bitsharesjs-demo)
   * [在自有私链上使用bitshares-js库](https://steemit.com/cn/@ety001/bitshares-js)
+* 窗外一叶 的博客 https://www.cwyyprog.com/tag/bitshares/
+  * [Win 10 编译bitshare-core witness node](https://www.cwyyprog.com/2020/06/29/win-10-%e7%bc%96%e8%af%91bitshare-core-witness-node/)
+  * [浏览/编译bitshares源代码的配置](https://www.cwyyprog.com/2020/03/17/%e6%b5%8f%e8%a7%88-%e7%bc%96%e8%af%91bitshares%e6%ba%90%e4%bb%a3%e7%a0%81%e7%9a%84%e9%85%8d%e7%bd%ae/)
+  * 比特股源码阅读笔记系列
 * legendx 的 Steemit 博客 https://steemit.com/@legendx
   * [DPOS共识算法 -- 缺失的白皮书](https://steemit.com/dpos/@legendx/dpos)
 * Cifer 的 Steemit 博客 https://steemit.com/@cifer

@@ -22,6 +22,7 @@
 * https://github.com/bitshares/bitshares-core/wiki 一些核心开发文档
 * https://docs.bitshares.org/ 目前是重定向到 https://how.bitshares.works/
 * https://doxygen.bitshares.org/hierarchy.html 这个是从代码生成出来的文档，包含代码里的文档性注释。
+* https://github.com/bitshares/awesome-bitshares 相关资料链接大全，有100多个链接
 * https://bitsharestalk.org/index.php?topic=23925.0 搭节点
 * https://steemit.com/bitshares/@ihashfury/distributed-access-to-the-bitshares-decentralised-exchange 搭网页钱包
 

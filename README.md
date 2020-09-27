@@ -41,6 +41,11 @@
   * [快速搭建私有单节点 Bitshares Testnet（二）](https://steemit.com/cn/@ety001/4sr2bf-bitshares-testnet)
   * [使用 bitsharesjs 库创建新用户Demo](https://steemit.com/cn/@ety001/bitsharesjs-demo)
   * [在自有私链上使用bitshares-js库](https://steemit.com/cn/@ety001/bitshares-js)
+* shulthz的几个教程 https://shulthz.github.io/
+  * [简易cli_wallet命令行钱包的教程](https://shulthz.github.io/2020/08/06/%E7%AE%80%E6%98%93cli_wallet%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%92%B1%E5%8C%85%E7%9A%84%E6%95%99%E7%A8%8B)
+  * [BTS: 帐号(云)模式转为本地钱包模式](https://shulthz.github.io/2020/08/06/BTS_-%E5%B8%90%E5%8F%B7(%E4%BA%91)%E6%A8%A1%E5%BC%8F%E8%BD%AC%E4%B8%BA%E6%9C%AC%E5%9C%B0%E9%92%B1%E5%8C%85%E6%A8%A1%E5%BC%8F)
+  * [BTS: 如何查看三对公私钥](https://shulthz.github.io/2020/08/06/BTS_-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E4%B8%89%E5%AF%B9%E5%85%AC%E7%A7%81%E9%92%A5)
+  * [BTS(比特股)新手相关教程-资料-钱包内盘-承兑商-社交等信息汇总](https://shulthz.github.io/2020/08/05/BTS(%E6%AF%94%E7%89%B9%E8%82%A1)%E6%96%B0%E6%89%8B%E7%9B%B8%E5%85%B3%E6%95%99%E7%A8%8B-%E8%B5%84%E6%96%99-%E9%92%B1%E5%8C%85%E5%86%85%E7%9B%98-%E6%89%BF%E5%85%91%E5%95%86-%E7%A4%BE%E4%BA%A4%E7%AD%89%E4%BF%A1%E6%81%AF%E6%B1%87%E6%80%BB)
 * 窗外一叶 的博客 https://www.cwyyprog.com/tag/bitshares/
   * [Win 10 编译bitshare-core witness node](https://www.cwyyprog.com/2020/06/29/win-10-%e7%bc%96%e8%af%91bitshare-core-witness-node/)
   * [浏览/编译bitshares源代码的配置](https://www.cwyyprog.com/2020/03/17/%e6%b5%8f%e8%a7%88-%e7%bc%96%e8%af%91bitshares%e6%ba%90%e4%bb%a3%e7%a0%81%e7%9a%84%e9%85%8d%e7%bd%ae/)

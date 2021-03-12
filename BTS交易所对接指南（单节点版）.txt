@@ -65,7 +65,7 @@ BTS 使用 DPOS 共识机制，由持有 BTS 的人投票产生区块锻造人�
 推荐 16G 内存或以上，至少需要 8G 内存
 推荐 150G 硬盘或以上，需要至少 100G 硬盘
 
-推荐 64 位 Ubuntu 20.04 LTS 。也可以使用其他主要发行版，或者 Windows Server 。
+推荐 64 位 Ubuntu 18.04 LTS 。也可以使用其他主要发行版，或者 Windows Server 。
 
 
 3. 程序准备

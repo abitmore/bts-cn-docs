@@ -89,11 +89,16 @@ cli_wallet 通过 http rpc 的方式提供 API 供其他程序调用（以下称
 3.2 Windows
 
 Github 上提供编译好的 Windows 可执行文件下载，下载页面在 https://github.com/bitshares/bitshares-core/releases/latest ，
-文件为 BitShares-Core-2.0.xxxxxx-x64-cli-tools.zip ，解开即可，里面包含 3 个 exe 文件和两个 dll 文件。
+文件为 bitshares-core-x.y.z-win64-bin.zip ，解开即可，里面包含 witness_node.exe 和 cli_wallet.exe 两个可执行文件。
+
+如果自行编译，参考教程 https://github.com/bitshares/bitshares-core/wiki/BUILD_WIN32
 
 3.3 Linux
 
-如果使用 Linux 系统，需要自行编译几个上述程序。推荐使用 Ubuntu 16.04 LTS ，编译步骤如下：
+Github 上提供编译好的 Linux 可执行文件下载，下载页面在 https://github.com/bitshares/bitshares-core/releases/latest ，
+文件为 bitshares-core-x.y.z-linux-amd64-bin.tar.bz2 ，解开即可，里面包含 witness_node 和 cli_wallet 两个可执行文件。
+
+如果自行编译，推荐使用 Ubuntu 18.04 LTS ，编译步骤如下：
 
 sudo apt-get update
 sudo apt-get install autoconf cmake git libboost-all-dev libssl-dev doxygen g++ libcurl4-openssl-dev
@@ -105,10 +110,12 @@ git submodule update --init --recursive
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..
-make witness_node cli_wallet
+make -j witness_node cli_wallet
 
 注：上述步骤中，请将 <LATEST_RELEASE_TAG> 替换成最新发布版本号。
-    （在 https://github.com/bitshares/bitshares-core/releases 可以查到最新版本，比如 2.0.180823 ）
+    （在 https://github.com/bitshares/bitshares-core/releases 可以查到最新版本，比如 5.1.0 ）
+
+如果因为内存不足导致编译失败，比如出现 Killed 字样，请尝试去掉 -j 参数重新编译。
 
 编译完成后，得到两个可执行程序分别是：
 * build/programs/witness_node/witness_node
@@ -117,18 +124,6 @@ make witness_node cli_wallet
 上述程序可以拷贝到其他目录或者其他服务器执行。以下默认认为程序在当前目录。
 
 注：拷贝到其他服务器执行时，如果服务器操作系统或其他软硬件环境有差异，则可能不能使用。
-
-如果使用 Ubuntu 14.04 LTS ，则需要先编译安装 Boost 库，然后再执行上述步骤。
-请注意，目前只支持 1.57.0 到 1.60.0 的 Boost 库。
-编译安装 Boost 库的步骤为：
-
-sudo apt-get install cmake make libbz2-dev libdb++-dev libdb-dev libssl-dev openssl libreadline-dev autoconf libtool git autotools-dev build-essential g++ libbz2-dev libicu-dev python-dev doxygen
-
-wget -c 'http://sourceforge.net/projects/boost/files/boost/1.57.0/boost_1_57_0.tar.bz2/download' -O boost_1_57_0.tar.bz2
-tar xjf boost_1_57_0.tar.bz2
-cd boost_1_57_0
-./bootstrap.sh
-sudo ./b2 install
 
 使用其他 Linux 发行版也可以编译，不在本文说明范围。
 

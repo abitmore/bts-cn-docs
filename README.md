@@ -23,7 +23,7 @@
 * https://docs.bitshares.org/ 目前是重定向到 https://how.bitshares.works/
 * https://doxygen.bitshares.org/hierarchy.html 这个是从代码生成出来的文档，包含代码里的文档性注释。
 * https://github.com/bitshares/awesome-bitshares 相关资料链接大全，有100多个链接
-* https://bitsharestalk.org/index.php?topic=23925.0 搭节点
+* https://bitsharestalk.org/index.php?topic=23925.msg303814#msg303814 搭节点
 * https://steemit.com/bitshares/@ihashfury/distributed-access-to-the-bitshares-decentralised-exchange 搭网页钱包
 
 
@@ -89,7 +89,7 @@
   * [一单将资产的“手续费资金”全部刷出](http://btsabc.org/article-612-1.html)
   * [在windows环境下实现BTS2.0自动分红的一种方法](http://btsabc.org/article-716-1.html)
 * 比特股论坛中文版 https://bitsharestalk.org/index.php/board,4.0.html
-  * [见证人(witness)安装设置教程](https://bitsharestalk.org/index.php?topic=18929.0)
+  * [见证人(witness)安装设置教程（老）](https://bitsharestalk.org/index.php?topic=18929.msg243643#msg243643)
 * Hi区块链资讯站及公众号 https://www.hibtc.org/
   * [一分钟安装完比特股重钱包，可以媲美中心化交易所一样的交易速度](https://mp.weixin.qq.com/s?__biz=MzAxNTIwNTEwMQ==&mid=2650185196&idx=1&sn=fc1650060dec749461ce282f9854d6ef&scene=19#wechat_redirect)
 * 邱绍锡的博客 https://qiushaoxi.com/

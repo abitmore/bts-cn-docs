@@ -19,6 +19,7 @@
 ### 英文资料
 * https://how.bitshares.works/ 针对终端用户的文档
 * https://dev.bitshares.works/ 针对开发者的文档
+* https://docs.bitshares.build/ 另一批文档
 * https://github.com/bitshares/bitshares-core/wiki 一些核心开发文档
 * https://docs.bitshares.org/ 目前是重定向到 https://how.bitshares.works/
 * https://doxygen.bitshares.org/hierarchy.html 这个是从代码生成出来的文档，包含代码里的文档性注释。
@@ -26,6 +27,43 @@
 * https://bitsharestalk.org/index.php?topic=23925.msg303814#msg303814 搭节点
 * https://steemit.com/bitshares/@ihashfury/distributed-access-to-the-bitshares-decentralised-exchange 搭网页钱包
 
+### 钱包
+* 网页钱包
+  * https://wallet.bitshares.org/
+  * https://develop.bitshares.org/
+  * https://bts.exchange/
+  * https://ex.xbts.io/
+  * https://iobanker.com/
+  * GDEX https://www.52bts.net/
+  * https://dex.delion.online/
+  * https://evrazdex.org/
+  * 测试网 https://test.xbts.io/
+* 个性化网页钱包
+  * 鼓鼓 https://m.magicw.net/
+  * XBTS APP （支持AMM） https://app.xbts.io/
+* 手机钱包
+  * BTS++ https://app.btspp.io/
+  * BiTSy http://www.bitsy-wallet.com/
+  * EVRAZ https://github.com/evraz-org/EVRAZ-smartphone-application
+* 轻钱包下载
+  * https://github.com/bitshares/bitshares-ui/releases/latest
+* 重钱包（节点）下载
+  * https://github.com/bitshares/bitshares-core/releases/latest
+
+### 扩展 API
+* https://api.bitshares.ws/docs
+* https://api.bitshares.build/api-docs
+* https://cryptofresh.com/api/docs
+* https://xbts.io/api
+* https://api.testnet.bitshares.ws/docs - 测试网
+
+### 区块链浏览器
+* https://blocksights.info
+* https://bts.ai
+* https://cryptofresh.com
+
+### 数据分析
+* https://kibana.bts.mobi
 
 ### 中文资料
 （以下排名不分先后）

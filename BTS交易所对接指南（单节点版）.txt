@@ -338,7 +338,7 @@ suggest_brain_key
 2. 这个方法也可以用来修改账户的资金权限密钥和账户权限密钥，有需要时可以使用。
 3. 修改过后，如果仍需要使用网页钱包进行带备注的转账、或者读取新的转入/转出转账备注，
    则需要将上述 wif_priv_key 导入到网页钱包，导入步骤为：
-   * 右上角“三”菜单-设置(Settings)-通用设置(General)页面最下面“登录模式(Login Mode)”确定为“本地钱包模式(Local Wallet Login)
+   * 右上角“三”菜单-设置(Settings)-通用设置(General)页面最下面“登录模式(Login Mode)”确定为“本地钱包模式(Local Wallet Login)”
    * 左边“本地钱包(Local Wallet)”-“当前使用的钱包(Active Local Wallet)”确认非空，如果为空则需点击“新建本地钱包(New Local Wallet)”
    * 左边“恢复/导入(Restore/Import)”-下拉框选“导入私钥(Import a private key)”-输入私钥-确认
    * 如果因为 BUG 无法在 https://wallet.bitshares.org/ 或者轻钱包完成上述步骤，请尝试 https://develop.bitshares.org/

@@ -346,7 +346,7 @@ suggest_brain_key
    导入后可以做个新的备份。
 
 
-6.2 将充值账户的备注密钥(Memo key)导入到连接到负责充值的 cli_wallet
+6.2 将充值账户的备注密钥(Memo key)导入到负责充值的 cli_wallet
 
 如果钱包已锁定，需要先用 unlock 命令解锁。
 
@@ -359,7 +359,7 @@ unlocked >>> import_key deposit-account 5JxyJx2KyDmAx5kpkMthWEpqGjzpwtGtEJigSMz5
 * 如果跳过了 6.1 步骤，需要从网页钱包取得备注密钥(Memo key)私钥进行导入。获取步骤为
   * 右上角“三”菜单-进阶功能(Advanced)-权限(Permissions)-备注密钥(Memo key)标签，复制以 BTS 开头的一串备注公钥(Memo Public Key)
   * 再点击“资金权限(Active Permissions)”标签，在第一个输入框“账户名或公钥(Account Name or Public Key)”里粘贴上述复制内容，
-    第二个输入框“权重(Weight)”填 1 ，点“添加(Add)”，下面列表中即会出现该公钥并可点击，在出现的页面里显示私钥并复制。
+    第二个输入框“权重(Weight)”填 1 ，点“添加(Add)”，下面列表中即会出现该公钥并可点击，在出现的页面里显示私钥并复制。不要点击“保存(Save)”。
   * 如果因为 BUG 无法在 https://wallet.bitshares.org/ 或者轻钱包完成上述步骤，请尝试 https://develop.bitshares.org/
 
 导入时 cli_wallet 会自动生成一个或者两个备份文件，可删除。

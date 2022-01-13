@@ -673,7 +673,9 @@ unlocked >>> get_block 12345
 
 * 多重签名： BTS 原生支持账户级多重签名，并且有提案-批准的机制，可以在线发起多签请求，然后确认完成多签交易，具体参考相关教程
 
-* 硬件钱包： 暂无支持
+* 硬件钱包：
+  * Ledger Nano S : https://github.com/bitshares/ledger-app-bitshares
+  * Keybox : https://keybox.magicw.net/
 
 * 冷存储： 可以实现，步骤有些复杂，示例：
   * 在离线机器，使用 cli_wallet --suggest_brain_key 命令离线生成密钥对；

@@ -690,5 +690,5 @@ unlocked >>> get_block 12345
 * 图文教程 http://jc.btsabc.org/
   * 自建节点教程 http://btsabc.org/article-477-1.html
   * 获取账户私钥 http://btsabc.org/article-761-1.html
-* 英文对接文档 https://dev.bitshares.works/en/master/bts_guide/tutorials/exchange_single_node.html?highlight=integration
+* 英文对接文档 https://dev.bitshares.works/en/master/bts_guide/tutorials/exchange_single_node.html
 * 英文 API 文档 https://dev.bitshares.works/en/master/api/index_api.html

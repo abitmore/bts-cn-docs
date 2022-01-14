@@ -14,32 +14,44 @@ BTS 使用 DPOS 共识机制，由持有 BTS 的人投票产生区块锻造人�
 
 1) BTS里，资金是存在账户里的，不像比特币是存在地址里。对交易所来说，需要公开一个账号供用户充值。
    可以使用网页钱包或者轻钱包注册新账号。
-   注意：对于交易所来说，注册账号请使用钱包模式，而不是账户模式，因为交易所要用到一些高级功能，在账户模式下会存在问题。
-        （如果是官方网页钱包或轻钱包 171102 或以上版本，第一次注册时默认是账户模式，可点击“高级”进入钱包模式）。
+   * 网页钱包地址 https://wallet.bitshares.org/ 
+     开发版 https://develop.bitshares.org/ ， 网页钱包可能存在 BUG 导致一些功能无法使用，可尝试使用开发版
+   * 轻钱包下载地址 https://github.com/bitshares/bitshares-ui/releases
+     轻钱包是网页钱包的下载版。下面的描述中，提到网页钱包的时候，一般都适用于轻钱包。
+   注意：对于交易所来说，注册账号请使用钱包模式，而不是账号+密码模式（简称账户模式），因为交易所要用到一些高级功能，在账户模式下会存在问题。
+        （如果是官方网页钱包或轻钱包 2.0.171102 或以上版本，第一次注册时默认是账户模式，可点击“钱包模式(advanced form)”进入钱包模式）。
    不是所有账号都可以免费注册，一般带横杠的或者数字的账号可以免费注册，比如 my-exchange ，或者 myexchange2017 。
-   在轻钱包账户页面里，账号下面会显示一个数字，这个数字是该账号在 BTS 系统里的内置ID，下面会用到。
-   注：官方网页钱包或轻钱包 171102 或以上版本，不再显示该数字。
-       可以到区块链浏览器 https://cryptofresh.com/ 输入账号名获取账户 ID ，
-       也可以自建节点同步完成后在钱包里通过命令获取 ID ，获取命令参考“提现目的账号名检查”章节。
    为了资金安全，交易所可以用一个账号负责充值，另用一个账号负责提现。
+   注：每个账号在 BTS 系统里有一个内置ID，格式为 "1.2.xxxxx" ，下面会用到。
+      可以到区块链浏览器 https://blocksights.info/ 输入账号名获取账户 ID ，
+      也可以自建节点同步完成后在钱包里通过命令获取 ID ，获取命令参考“提现目的账号名检查”章节。
 
 2) 用户充值，就是从其他账号转账到交易所的公开的账号。
    账号名就是收款地址。
-   每笔转账可以带一个备注，交易所通过这个备注来区分是哪个用户的充值。
-   具体备注与交易所用户关联关系，请交易所自行设定。
-   备注是加密的，只有拥有发送者或者接收者的备注密钥才可以解密。
+   每笔转账可以带一个备注(Memo)，交易所通过这个备注(Memo)来区分是哪个用户的充值。
+   具体备注(Memo)与交易所用户关联关系，请交易所自行设定。
+   备注(Memo)是加密的，只有拥有发送者或者接收者的备注密钥(memo key)才可以解密。
 
 3) 用户提现，就是从交易所账号转账到用户账号，目的账号名由用户提供。
-   由于有用户需要把资金直接从一个交易所转到另一个交易所，而另一个交易所是根据备注入账，所以提现功能最好可以带备注。
+   由于有用户需要把资金直接从一个交易所转到另一个交易所，而另一个交易所是根据备注(Memo)入账，所以提现功能最好可以带备注(Memo)。
 
-4) 使用网页钱包注册的账号是基本账号。可付费升级为终身会员账号，升级后，后续交易手续费节省 80% 。
+4) 使用网页钱包注册的账号是基本账号。可付费升级为终身会员账号，升级后，后续交易手续费节省 80% (先支付后返款，返款需主动提取)。
    终身会员可以创建新账号。
-   当前手续费费率标准可以在钱包内查看，从界面依次点击 浏览-费率表 进入。
+   当前手续费费率标准可以在钱包内查看，从界面依次点击 浏览(Explore)-费率表(Fee Schedule) 进入。
 
-5) 每个账号默认有3对密钥，可以在账户-高级设定-权限页面里查看，分别为：活跃权限、账户权限、备注密钥。
-   其中，活跃权限密钥用于转账等日常操作；账户权限密钥用于修改密钥；备注密钥用来加密和解密转账备注。
-   默认情况下，活跃权限密钥与备注密钥相同，但可以修改为不同。
-   以上 3 对密钥都可以修改。其中，账户权限为最高权限，可以修改所有密钥；使用活跃权限密钥不能修改账户权限密钥，但可以修改其他两个密钥。
+5) 每个账号默认有 3 对密钥，可以在网页钱包点击右上角“三”状图标，然后点击“进阶功能(Advanced)”-“权限(Permissions)”，出现的页面里，
+     三对密钥分别为：资金权限(Active Permissions 或 Active Key)、账户权限(Owner Permissions 或 Owner Key)、备注密钥(Memo key)。
+   其中，资金权限密钥用于转账等日常操作；账户权限密钥用于修改密钥；备注密钥用来加密和解密转账备注。
+   使用钱包模式注册的账户，默认情况下，资金权限密钥与备注密钥相同，但可以修改为不同。
+   以上 3 对密钥都可以修改。其中，账户权限为最高权限，可以修改所有密钥；使用资金权限密钥不能修改账户权限密钥，但可以修改其他两个密钥。
+   注：
+   * 链上操作都是通过密钥来进行验证。“钱包模式”和“账户模式”是 UI 概念，对应不同的密钥生成机制。
+   * 钱包模式下，存在一个钱包文件，钱包文件包含一个种子(brain key，由一组单词组成)，其他自动生成的密钥都是从种子衍生而来，如果密钥丢失，可以通过种子恢复。
+     钱包密码是用来在本地设备上加密钱包文件的，修改钱包密码不会影响链上密钥。
+     钱包文件需要备份。
+   * 账户模式下，账号的密钥是从账号名和密码经过哈希运算得出的，只要记住账户名和密码，则可以在任何支持该模式的设备上使用。
+     账户模式下不需要备份文件，但必须同时记住账户名和密码。
+     账户模式下，修改密码操作是上链的，会导致密钥发生变化。
 
 
 1.3 资产
@@ -65,7 +77,7 @@ BTS 使用 DPOS 共识机制，由持有 BTS 的人投票产生区块锻造人�
 推荐 16G 内存或以上，至少需要 8G 内存
 推荐 150G 硬盘或以上，需要至少 100G 硬盘
 
-推荐 64 位 Ubuntu 18.04 LTS 。也可以使用其他主要发行版，或者 Windows Server 。
+推荐 64 位 Ubuntu 20.04 LTS 。也可以使用其他主要发行版，或者 Windows Server 。
 
 
 3. 程序准备
@@ -79,7 +91,7 @@ witness_node 通过 websocket + http rpc 的方式提供 API 供其他程序调�
 
 cli_wallet 通过 websocket 方式连接到 witness_node 。
 cli_wallet 管理钱包文件，钱包文件里包含经过加密的用户私钥，一个钱包文件可以包含多个私钥。
-可以同时运行多个 cli_wallet 进程，同时连到 witness_node ，用来同时管理多个钱包文件。
+可以同时运行多个 cli_wallet 进程，同时连到 witness_node ，用来管理多个钱包文件。
 cli_wallet 提供交易签名功能，签名后通过 witness_node 向外广播。
 cli_wallet 通过 http rpc 的方式提供 API 供其他程序调用（以下称为钱包 API）。
 
@@ -98,7 +110,7 @@ Github 上提供编译好的 Windows 可执行文件下载，下载页面在 htt
 Github 上提供编译好的 Linux 可执行文件下载，下载页面在 https://github.com/bitshares/bitshares-core/releases/latest ，
 文件为 bitshares-core-x.y.z-linux-amd64-bin.tar.bz2 ，解开即可，里面包含 witness_node 和 cli_wallet 两个可执行文件。
 
-如果自行编译，推荐使用 Ubuntu 18.04 LTS ，编译步骤如下：
+如果自行编译，推荐使用 Ubuntu 20.04 LTS ，编译步骤如下：
 
 sudo apt-get update
 sudo apt-get install autoconf cmake git libboost-all-dev libssl-dev doxygen g++ libcurl4-openssl-dev
@@ -113,7 +125,7 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 make -j witness_node cli_wallet
 
 注：上述步骤中，请将 <LATEST_RELEASE_TAG> 替换成最新发布版本号。
-    （在 https://github.com/bitshares/bitshares-core/releases 可以查到最新版本，比如 5.1.0 ）
+    （在 https://github.com/bitshares/bitshares-core/releases 可以查到最新版本，比如 6.0.0 ）
 
 如果因为内存不足导致编译失败，比如出现 Killed 字样，请尝试去掉 -j 参数重新编译。
 
@@ -159,76 +171,40 @@ sudo apt-get install ntp
 
 然后按 Ctrl+C 结束它。
 
-这样会在当前目录生成一个数据目录 witness_node_data_dir ，里面包含 blockchain 目录是数据存储，以及一个 config.ini 配置文件。
+这样会在当前目录生成一个数据目录 witness_node_data_dir ，里面包含 blockchain 目录是数据存储，以及 config.ini 和 logging.ini 配置文件。
+注：如果数据目录是较老版本的 witness_node 生成的，则没有 logging.ini 文件，相关的配置内容在 config.ini 文件里。
+    对于这种情况，建议在一个新的目录运行 witness_node ，生成一份新的配置文件，然后对照老版本进行修改
 
+对于交易所，推荐对配置文件作一些修改。
 
-对于交易所，推荐对 config.ini 配置文件作一些修改。
+1) 以下参数会减少运行需要的内存，原理是不保存交易所用不到的数据。
 
-1) 可关闭 p2p 日志，以减小硬盘存储压力，方法是找到 filename=logs/p2p/p2p.log 行，在行首添加 # 号
-   或者将 [logger.p2p] 下面的 level=info 修改为 level=error
-
-2) 可考虑将控制台日志同时保存到文件，方法是将下述章节
-
-[logger.default]
-level=info
-appenders=stderr
-
-修改为
-
-[log.file_appender.default]
-filename=logs/default/default.log
-
-[logger.default]
-level=info
-appenders=stderr,default
-
-这样之后， witness_node_data_dir/logs/default/ 目录下会同步保留最近24小时的控制台日志。
-
-3) 以下参数会减少运行需要的内存，原理是不保存 BTS 内置交易引擎的历史成交记录索引，因为交易所一般用不到这个数据。
-
-history-per-size = 0
-
-如果是 2.0.171105a 及以后版本，则需要设置这个参数：
-
-plugins = witness account_history
+plugins = account_history
+ignore-api-helper-indexes-warning = true
 
 注：
-* config.ini 里默认 plugins 前有个“#”符号，需要删除；
-* 默认的 plugins 配置是 “witness account_history market_history”，这里实际是去掉“market_history”；
-* 如果 config.ini 里没找到该配置项，比如从老版本升级上来时不会更新已有配置文件，
-  * 可以在 config.ini 最前面添加一行（不要加在文件最后面），
-  * 也可以另外找个空目录生成一个 config.ini 文件再拷过来修改。
+* 如果 config.ini 里没找到上述配置项，比如从老版本升级上来时不会更新已有配置文件，建议另外找个空目录生成一个 config.ini 文件再拷过来修改。
+* 默认的 plugins 配置有多项，这里实际是去掉其他项，只保留 account_history
+* 如果只修改 plugins 会导致程序无法启动，需要同时修改 ignore-api-helper-indexes-warning
+* 默认 ignore-api-helper-indexes-warning 前面有“#”符号，需要删除
 
-4) 以下参数表示每账号保留多少条历史记录供查询，默认值是 1000 。
-   对交易所来说，如果充值、提现记录较多，可考虑设置成一个较大的值，比如
-
-max-ops-per-account = 1000
-
-修改为
-
-max-ops-per-account = 1000000
-
-则会保留一百万条数据。更早的数据会从内存中被删除而无法快速查询（但仍然记录在链上）。
-
-5) 以下两个参数会大量减少运行需要的内存，原理是不保存与交易所账户无关的历史数据索引。
+2) 以下参数会大量减少运行需要的内存，原理是不保存与交易所账户无关的历史数据索引。
 
 track-account = "1.2.12345"
-partial-operations = true
 
 请将 12345 替换成你的账户数字 ID 。数字前的 "1.2." 表示类型是账户。
-注： config.ini 里默认 track-account 前面有个“#”符号，需要删除。
-
 如果需要监控多个账户，则使用多个 track-account 配置，如：
 
 track-account = "1.2.12345"
 track-account = "1.2.12346"
-partial-operations = true
 
 注：
-目前存在一个 BUG ，配置多个 track-account 会导致上面的日志修改不生效。
-绕过这个问题的方法，是不动 config.ini ，而是启动 witness_node 的时候，在命令行后面添加 --track-account 参数，比如：
+* config.ini 里默认 track-account 前面有个“#”符号，需要删除。
+* 参数首尾双引号需要保留
+* 如果需要增加、修改、删除追踪账号，修改后，需要重建索引才能生效。
+* 也可以在启动 witness_node 的时候，在命令行后面添加 --track-account 参数，比如：
 
-./witness_node --track-account "\"1.2.12345\"" --track-account "\"1.2.12346\""
+  ./witness_node --track-account "\"1.2.12345\"" --track-account "\"1.2.12346\""
 
 注：
 * 参数首尾双引号需要保留，所以使用 \ 进行转义。 Linux 下可以使用双引号外加一层单引号的方式，则不需要转义。
@@ -237,12 +213,35 @@ partial-operations = true
 
   ./witness_node -d witness_node_data_dir --track-account "\"1.2.12345\"" --track-account "\"1.2.12346\"" --replay-blockchain
 
+3) 以下参数表示每账号保留多少条历史记录供查询，默认值是 100 。
+   对交易所来说，如果充值、提现记录较多，可考虑设置成一个较大的值，比如
+
+max-ops-per-account = 100
+
+修改为
+
+max-ops-per-account = 1000000
+
+则会保留一百万条数据。更早的数据会从内存中被删除而无法快速查询（但仍然记录在链上）。
+
+4) 也可以考虑使用下述参数组合来设置追踪账号，而不使用 track-account 和 max-ops-per-account 的参数组合，
+   这样的话，符合条件的账号会保留 extended-max-ops-per-account 条历史记录，其他账号会保留 max-ops-per-account 条记录。
+
+# Maximum number of operations to keep for accounts for which extended history is kept
+# extended-max-ops-per-account = 
+
+# Track longer history for these accounts (may specify multiple times)
+# extended-history-by-account = 
+
+# Track longer history for accounts with this registrar (may specify multiple times)
+# extended-history-by-registrar = 
+
 
 5.1.2 重新执行
 
 再次启动 witness_node ，开始同步数据。根据网络条件、服务器硬件条件不同，初次同步可能需要花几个小时到几天时间。
 
-./witness_node -d witness_node_data_dir --rpc-endpoint 127.0.0.1:8090 --track-account "\"1.2.12345\"" --track-account "\"1.2.12346\"" --partial-operations true --max-ops-per-account 1000000 --replay-blockchain
+./witness_node -d witness_node_data_dir --rpc-endpoint 127.0.0.1:8090 --track-account "\"1.2.12345\"" --track-account "\"1.2.12346\"" --max-ops-per-account 1000000 --replay-blockchain
 
 上述命令中，使用 --rpc-endpoint 开启节点 API 服务，这样就可以使用 cli_wallet 和其他程序连接使用
 
@@ -256,8 +255,8 @@ partial-operations = true
 上述命令使用 -w 参数指定钱包文件， -s 参数连接到 witness_node ， -H 参数开启钱包 API 服务，监听端口 8091
 
 注： 
-  可使用 ./cli_wallet --help 来查看命令参数。
-  cli_wallet 与 witness_node 间通信的数据不包含私密数据，一般不需加密，也不需要对节点 RPC 端口作刻意保护（加一层保护也未尝不可）。
+* 可使用 ./cli_wallet --help 来查看命令参数。
+* cli_wallet 与 witness_node 间通信的数据不包含私密数据，一般不需加密，也不需要对节点 RPC 端口作刻意保护（加一层保护也未尝不可）。
   但 cli_wallet 与充提程序间的通信是明文，可能需要包含密码，如果部署为多机架构，需要注意加密，可采用 SSH 隧道的方式。
   并且， cli_wallet 处于解锁状态时，通过 RPC 端口可以转移钱包内账户资金，需要注意防止非授权访问，强烈不建议钱包 RPC 直接开放公网访问。
   为 cli_wallet 的 RPC 配置证书或者密码的做法，本人没有研究过，故此不作描述。
@@ -266,21 +265,29 @@ partial-operations = true
 
 new >>> 
 
-首先需要为钱包文件设置一个密码
+首先需要为钱包文件设置一个密码，输入 set_password 然后按回车键：
 
-new >>> set_password my_password_1234
+new >>> set_password [回车]
 
+按提示输入密码，密码不会显示。
 执行成功会显示：
 
 locked >>>
 
 然后解锁钱包
 
-locked >>> unlock my_password_1234
+locked >>> unlock [回车]
 
+按提示输入密码，密码不会显示。
 解锁成功会显示：
 
 unlocked >>>
+
+注：如果是 Windows ，不能直接按回车再输密码，而是必须把密码直接写在命令后，如：
+
+  new >>> set_password my_password_123
+  locked >>> unlock my_password_123
+  unlocked >>>
 
 使用 info 命令可以查看当前同步情况
 
@@ -309,7 +316,9 @@ info
 
 考虑到安全性，可以使用两个账号分别处理充值和提现，这里假设 deposit-account 用于充值，withdrawal-account 用于提现。
 
-6.1 修改充值账户的备注密钥
+6.1 修改充值账户的备注密钥(Memo key)
+
+注：如果账户的 active key 和 memo key 不同，比如是用账户模式创建的账户，可跳过这一步。
 
 在上述任何一个 cli_wallet 中执行 suggest_brain_key ，会得到一对密钥，示例如下：
 
@@ -321,17 +330,23 @@ suggest_brain_key
   "pub_key": "BTS69uKRvM8dAPn8En4SCi2nMTHKXt1rWrohFbwaPwv2rAbT3XFzf"
 }
 
-在轻钱包里，账户权限页面，将备注密钥修改为上述结果中的 pub_key 
+在网页钱包里，账户权限页面，将备注密钥修改为上述结果中的 pub_key ，步骤为：
+* 右上角“三”菜单-进阶功能(Advanced)-权限(Permissions)-备注密钥(Memo key)标签，输入上述新密钥，保存
 
 注：
-1. 修改过后请注意备份轻钱包，否则轻钱包里可能无法解密修改前的备注。
-2. 修改过后，如果仍需要使用轻钱包进行带备注的转账、或者读取新的转入/转出转账备注，
-   则需要将上述 wif_priv_key 导入到轻钱包，导入步骤参考如下教程中的第二步： http://btsabc.org/article-761-1.html 。
+1. 修改过后请注意备份，否则网页钱包里可能无法解密修改前的备注。
+2. 这个方法也可以用来修改账户的资金权限密钥和账户权限密钥，有需要时可以使用。
+3. 修改过后，如果仍需要使用网页钱包进行带备注的转账、或者读取新的转入/转出转账备注，
+   则需要将上述 wif_priv_key 导入到网页钱包，导入步骤为：
+   * 右上角“三”菜单-设置(Settings)-左边“通用设置(General)”-页面最下面“登录模式(Login Mode)”确定为“本地钱包模式(Local Wallet Login)”
+   * 左边“本地钱包(Local Wallet)”-“当前使用的钱包(Active Local Wallet)”确认非空，如果为空则需点击“新建本地钱包(New Local Wallet)”
+   * 左边“恢复/导入(Restore/Import)”-下拉框选“导入私钥(Import a private key)”-输入私钥-确认
+   * 如果因为 BUG 无法在 https://wallet.bitshares.org/ 或者轻钱包完成上述步骤，请尝试 https://develop.bitshares.org/
+   参考如下教程中的第二步： http://btsabc.org/article-761-1.html 。
    导入后可以做个新的备份。
-3. 这个方法也可以用来修改账户的活跃权限密钥和账户权限密钥，有需要时可以使用。
 
 
-6.2 将充值账户的备注密钥导入到连接到负责充值的 cli_wallet
+6.2 将充值账户的备注密钥(Memo key)导入到负责充值的 cli_wallet
 
 如果钱包已锁定，需要先用 unlock 命令解锁。
 
@@ -339,37 +354,50 @@ suggest_brain_key
 
 unlocked >>> import_key deposit-account 5JxyJx2KyDmAx5kpkMthWEpqGjzpwtGtEJigSMz5XE1AtrQaZXu
 
+注：
+* 如果在 witness_node 同步完成前导入，可能失败。请同步完成后再尝试。
+* 如果跳过了 6.1 步骤，需要从网页钱包取得备注密钥(Memo key)私钥进行导入。获取步骤为
+  * 右上角“三”菜单-进阶功能(Advanced)-权限(Permissions)-备注密钥(Memo key)标签，复制以 BTS 开头的一串备注公钥(Memo Public Key)
+  * 再点击“资金权限(Active Permissions)”标签，在第一个输入框“账户名或公钥(Account Name or Public Key)”里粘贴上述复制内容，
+    第二个输入框“权重(Weight)”填 1 ，点“添加(Add)”，下面列表中即会出现该公钥并可点击，在出现的页面里显示私钥并复制。不要点击“保存(Save)”。
+  * 如果因为 BUG 无法在 https://wallet.bitshares.org/ 或者轻钱包完成上述步骤，请尝试 https://develop.bitshares.org/
+
 导入时 cli_wallet 会自动生成一个或者两个备份文件，可删除。
 
-这时可按 Ctrl + D 退出钱包，对钱包文件 wallet_for_deposit.json 进行备份，然后重新启动 cli_wallet 。
+这时可按 Ctrl + D 或者 Ctrl + C 退出钱包，对钱包文件 wallet_for_deposit.json 进行备份，然后重新启动 cli_wallet 。
 
-退出时会报个错，不用管它。
+退出时如果报错，可以忽略。
 
-如果编译时没有引入 readline 库，则需要用 Ctrl + C 退出
-
-由于没有导入活跃权限密钥，负责处理充值的 cli_wallet 无法动用充值账户的资金，只能查看历史记录。
+由于没有导入资金权限密钥(Active key)，负责处理充值的 cli_wallet 无法动用充值账户的资金，只能查看历史记录。
 
 
-6.3 从轻钱包中取得提现账户的活跃权限密钥
+6.3 从网页钱包中取得提现账户的资金权限密钥(Active key)
+
+获取步骤为
+* 右上角“三”菜单-进阶功能(Advanced)-权限(Permissions)-“资金权限(Active Permissions)”标签
+* 点击下面列表中 BTS 开头的一串公钥，在出现的页面里显示私钥并复制。
 
 参考 http://btsabc.org/article-761-1.html
 
 
-6.4 将提现账户的活跃权限密钥导入到负责提现的 cli_wallet
+6.4 将提现账户的资金权限密钥(Active key)导入到负责提现的 cli_wallet
 
 unlocked >>> import_key withdrawal-account 5xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 同样可以对钱包文件作个备份。
 
-注：检查一下提现账户的活跃权限密钥和备注密钥是否一样，如果不一样，则需要将备注密钥也导入，否则无法处理带备注的提现。导入命令仍然是：
+注：检查一下提现账户的资金权限密钥(Active key)和备注密钥(Memo key)是否一样，如果不一样，则需要将备注密钥也导入，否则无法处理带备注的提现。导入命令仍然是：
 
 unlocked >>> import_key withdrawal-account 5xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+备注密钥获取方式参考 6.2 节内注解。
 
 
 7. 钱包命令
 
 cli_wallet 里，
 * 使用 help 命令可以列出命令清单及参数
+* Linux 和 macOS 下可以按 TAB 键补全命令，可以按上下箭头浏览历史命令
 * 如果编译时有 doxygen ，使用 gethelp 命令可以获取具体命令的参数说明及示例，如
 
 unlocked >>> gethelp get_account
@@ -382,6 +410,7 @@ unlocked >>> gethelp get_account
 示例：
 
 curl -d '{"jsonrpc": "2.0", "method": "get_block", "params": [1], "id": 1}' http://127.0.0.1:8093/rpc
+curl -d '{"jsonrpc": "2.0", "method": "unlock", "params": ["my_password_123"], "id": 2}' http://127.0.0.1:8093/rpc
 
 即：method 传入命令名，params 数组传入参数清单。
 
@@ -390,7 +419,6 @@ curl -d '{"jsonrpc": "2.0", "method": "get_block", "params": [1], "id": 1}' http
 {"id":1,"result":{"previous":"0000000000000000000000000000000000000000","timestamp":"2015-10-13T14:12:24","witness":"1.6.8","transaction_merkle_root":"0000000000000000000000000000000000000000","extensions":[],"witness_signature":"1f53542bb60f1f7a653bac70d6b1613e73b9adc952031e30e591e601dd60d493ba5c9a832e155ff0c40ea1dd53512e9f93bf65a8191497ea67d701bc2502f93af7","transactions":[],"block_id":"00000001b656820f72f6b28cda811778632d4998","signing_key":"BTS6ZQEFsPmG6jWspNDdZHkehNmPpG7gkSHkphmRZQWaJ2LrcaVSi","transaction_ids":[]}}
 
 如果执行成功，结果会有 result ，否则会有 error 。
-
 
 注意：
 HTTP RPC 请求 URI 为 /rpc 。
@@ -484,7 +512,7 @@ curl -d '{"jsonrpc": "2.0", "method": "get_relative_account_history", "params": 
 可见，结果中并没有显式包含每条记录的编号，需要程序自行推算、记录。一般将该数组顺序颠倒，然后逐一处理比较合适。
 
 首先要判断该交易所在区块是否已经无法回退。
-  取 result[N]["op"]["block_num"] 与 last_irreversible_block_num 作比较，如果可以不可回退则继续处理，可以回退则先跳过不处理。
+  取 result[N]["op"]["block_num"] 与 last_irreversible_block_num 作比较，如果不可回退则继续处理，可以回退则先跳过不处理。
 注意：交易没有进块时，仍然可能在 get_relative_account_history 中出现，并且所在块号会一直改变，难以判断状态。
   所以请使用 last_irreversible_block_num 来判断。
 
@@ -515,7 +543,6 @@ curl -d '{"jsonrpc": "2.0", "method": "get_block", "params": [160000], "id": 1}'
 2) 如果检测到有充值的备注不正确，或者资产类型不正确，注意不要简单退回，因为可能是从其他交易所转来的，退回后对方处理起来也会很麻烦。
 3) 一个块里很可能有多笔充值，结果的 block_num 相同，甚至可能 trx_in_block 和 op_in_trx 也相同，但 virtual_op 不同，需注意处理。
    可以肯定 blocknum + trx_in_block + op_in_trx + vitrual_op 的组合是唯一的。
-   这里还要注意个问题， virtual_op 的数据目前有个 BUG，如果不是每次重启参数都一样并且都 replay ，重新查历史数据，会发现这个值会不一致
 4) 由于存在“提议”功能，可以延期执行，用 get_block 然后用 trx_in_block 定位时可能取不到对应交易，或者取到的交易与充值操作不对应。
    延期执行功能目前很少有人用，但理论上存在，请注意错误处理。
 
@@ -646,10 +673,12 @@ unlocked >>> get_block 12345
 
 * 多重签名： BTS 原生支持账户级多重签名，并且有提案-批准的机制，可以在线发起多签请求，然后确认完成多签交易，具体参考相关教程
 
-* 硬件钱包： 暂无支持
+* 硬件钱包：
+  * Ledger Nano S : https://github.com/bitshares/ledger-app-bitshares
+  * Keybox : https://keybox.magicw.net/
 
 * 冷存储： 可以实现，步骤有些复杂，示例：
-  * 在离线机器，启动 witness_node 及 cli_wallet ，使用 suggest_brain_key 命令离线生成密钥对；
+  * 在离线机器，使用 cli_wallet --suggest_brain_key 命令离线生成密钥对；
   * 然后用轻钱包将账户密钥修改为上述密钥，则账户进入冷存状态
   * 需要动用冷存账户时，
     * 可以用暂时变热的方式，即将私钥导入轻钱包使用，用完后再换成新密钥
@@ -661,5 +690,5 @@ unlocked >>> get_block 12345
 * 图文教程 http://jc.btsabc.org/
   * 自建节点教程 http://btsabc.org/article-477-1.html
   * 获取账户私钥 http://btsabc.org/article-761-1.html
-* 英文对接文档 http://docs.bitshares.org/integration/exchanges/step-by-step.html
-* 英文 API 文档 http://docs.bitshares.org/api/index.html
+* 英文对接文档 https://dev.bitshares.works/en/master/bts_guide/tutorials/exchange_single_node.html
+* 英文 API 文档 https://dev.bitshares.works/en/master/api/index_api.html

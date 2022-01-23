@@ -409,8 +409,8 @@ unlocked >>> gethelp get_account
 
 示例：
 
-curl -d '{"jsonrpc": "2.0", "method": "get_block", "params": [1], "id": 1}' http://127.0.0.1:8093/rpc
-curl -d '{"jsonrpc": "2.0", "method": "unlock", "params": ["my_password_123"], "id": 2}' http://127.0.0.1:8093/rpc
+curl -d '{"jsonrpc": "2.0", "method": "get_block", "params": [1], "id": 1}' http://127.0.0.1:8093/
+curl -d '{"jsonrpc": "2.0", "method": "unlock", "params": ["my_password_123"], "id": 2}' http://127.0.0.1:8093/
 
 即：method 传入命令名，params 数组传入参数清单。
 
@@ -421,7 +421,6 @@ curl -d '{"jsonrpc": "2.0", "method": "unlock", "params": ["my_password_123"], "
 如果执行成功，结果会有 result ，否则会有 error 。
 
 注意：
-HTTP RPC 请求 URI 为 /rpc 。
 在钱包里输入命令，返回结果是经过美化的；使用 http rpc 请求时，返回的是 json 格式的原始数据。关于原始数据，需要注意的有：
 * 金额是 {"amount":467116432,"asset_id":"1.3.0"} 格式，其中
   * asset_id 可以通过 get_asset 命令查到具体名称， BTS 的 asset_id 是 1.3.0 ，其他资产有其他 id
@@ -457,7 +456,7 @@ unlocked >>> get_relative_account_history deposit-account 1 100 100
 
 unlocked >>> get_relative_account_history deposit-account 101 100 200
 
-curl -d '{"jsonrpc": "2.0", "method": "get_relative_account_history", "params": ["deposit-account",1,100,100], "id": 1}' http://127.0.0.1:8093/rpc
+curl -d '{"jsonrpc": "2.0", "method": "get_relative_account_history", "params": ["deposit-account",1,100,100], "id": 1}' http://127.0.0.1:8093/
 
 
 四个参数分别为：账户名，最小编号，最大返回数量，最大编号。编号从 1 开始。
@@ -532,7 +531,7 @@ result[N]["op"]["id"] 是这笔转账的唯一 ID ，可以记录备查。
 
 unlocked >>> get_block 16000000
 
-curl -d '{"jsonrpc": "2.0", "method": "get_block", "params": [160000], "id": 1}' http://127.0.0.1:8093/rpc
+curl -d '{"jsonrpc": "2.0", "method": "get_block", "params": [160000], "id": 1}' http://127.0.0.1:8093/
 
 设结果中块内容为 result ，根据上述 trx_in_block ，
 取 result["transaction_ids"][trx_in_block] ，即为对应的交易 ID；

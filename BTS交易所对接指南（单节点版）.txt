@@ -342,7 +342,7 @@ suggest_brain_key
    * 左边“本地钱包(Local Wallet)”-“当前使用的钱包(Active Local Wallet)”确认非空，如果为空则需点击“新建本地钱包(New Local Wallet)”
    * 左边“恢复/导入(Restore/Import)”-下拉框选“导入私钥(Import a private key)”-输入私钥-确认
    * 如果因为 BUG 无法在 https://wallet.bitshares.org/ 或者轻钱包完成上述步骤，请尝试 https://develop.bitshares.org/
-   参考如下教程中的第二步： http://btsabc.org/article-761-1.html 。
+   参考如下教程中的第二步： https://web.archive.org/web/20210926120309/http://btsabc.org/article-761-1.html 。
    导入后可以做个新的备份。
 
 
@@ -377,7 +377,7 @@ unlocked >>> import_key deposit-account 5JxyJx2KyDmAx5kpkMthWEpqGjzpwtGtEJigSMz5
 * 右上角“三”菜单-进阶功能(Advanced)-权限(Permissions)-“资金权限(Active Permissions)”标签
 * 点击下面列表中 BTS 开头的一串公钥，在出现的页面里显示私钥并复制。
 
-参考 http://btsabc.org/article-761-1.html
+参考 https://web.archive.org/web/20210926120309/http://btsabc.org/article-761-1.html
 
 
 6.4 将提现账户的资金权限密钥(Active key)导入到负责提现的 cli_wallet
@@ -674,7 +674,7 @@ unlocked >>> get_block 12345
 
 * 硬件钱包：
   * Ledger Nano S : https://github.com/bitshares/ledger-app-bitshares
-  * Keybox : https://keybox.magicw.net/
+  * Keybox : https://web.archive.org/web/20240907102928/https://keybox.magicw.net/
 
 * 冷存储： 可以实现，步骤有些复杂，示例：
   * 在离线机器，使用 cli_wallet --suggest_brain_key 命令离线生成密钥对；
@@ -686,8 +686,8 @@ unlocked >>> get_block 12345
 
 12. 相关资料
 
-* 图文教程 http://jc.btsabc.org/
-  * 自建节点教程 http://btsabc.org/article-477-1.html
-  * 获取账户私钥 http://btsabc.org/article-761-1.html
-* 英文对接文档 https://dev.bitshares.works/en/master/bts_guide/tutorials/exchange_single_node.html
-* 英文 API 文档 https://dev.bitshares.works/en/master/api/index_api.html
+* 图文教程 https://web.archive.org/web/20211227175712/http://jc.btsabc.org/
+  * 自建节点教程 https://web.archive.org/web/20211020003834/http://btsabc.org/article-477-1.html
+  * 获取账户私钥 https://web.archive.org/web/20210926120309/http://btsabc.org/article-761-1.html
+* 英文对接文档 https://docs.bitshares.dev/en/master/bts_guide/tutorials/exchange_single_node.html
+* 英文 API 文档 https://docs.bitshares.dev/en/master/api/index_api.html

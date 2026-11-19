@@ -1,0 +1,35 @@
+1、BitShares 5.0.0 版本已发布，代号“水花”
+https://bitsharestalk.org/index.php?topic=32635.0
+
+2、测试网版本 test-5.0.0 及 AMM 池命令行教程
+https://bitsharestalk.org/index.php?topic=32631.0
+
+3、计划9月30日上线BTS 5.0
+https://bitsharestalk.org/index.php?topic=32628.0
+
+4、【千万深度】做市机器人大赛 / 做市商奖励计划
+https://bitsharestalk.org/index.php?topic=29665.0
+
+5、【游戏】寻找比特股接班人
+https://bitsharestalk.org/index.php?topic=32504.0
+
+6、关于4.0的几点说明
+https://bitsharestalk.org/index.php?topic=32587.0
+
+7星在飘 回来了，不，他一直在我们身边
+https://bitsharestalk.org/index.php?topic=32562.0
+
+8、new oid
+https://github.com/bitshares/bitshares-core/pull/2306/files
+
+9、理事会工具
+https://github.com/abitmore/bts-mmcontest-scripts
+
+10、 严重BUG,可以任意操作别人帐号
+https://bitsharestalk.org/index.php?topic=25623.15
+
+11、请教一个关于重钱包的问题
+https://bitsharestalk.org/index.php?topic=26399.0
+
+12、【教程】不升级终身会员、不通过水龙头，自助注册账号
+https://bitsharestalk.org/index.php?topic=32473.msg342818;topicseen#msg342818

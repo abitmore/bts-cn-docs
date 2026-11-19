@@ -1,7 +1,7 @@
 cli_wallet 也可以连接到公共 API 节点使用，格式类似如下：
 
 ```
-cli_wallet -s wss://api.bts.mobi/
+cli_wallet -s wss://api.bitshares.dev/
 ```
 
 公共 API 节点清单在 https://github.com/bitshares/bitshares-ui/blob/develop/app/api/apiConfig.js 里搜索 url 。

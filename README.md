@@ -59,6 +59,7 @@
 * https://blocksights.info
 * https://bts.ai
 * https://cryptofresh.com
+* https://bitsharescan.deed.page
 
 ### 数据分析
 * https://kibana.bitshares.dev
